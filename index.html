@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunset Basin Farms — Klamath Falls, Oregon</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --gold:    #C8962A;
+    --gold2:   #E8B84B;
+    --earth:   #3B2A1A;
+    --dark:    #1A1208;
+    --bg:      #0F0C07;
+    --bg2:     #1C1610;
+    --bg3:     #241E14;
+    --green:   #4A6741;
+    --green2:  #6B8F5E;
+    --text:    #EDE8DC;
+    --muted:   #9A9080;
+    --border:  rgba(200,150,42,0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Georgia', serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 4rem;
+    background: rgba(15,12,7,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--gold2);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Georgia', serif;
+  }
+
+  nav ul { list-style: none; display: flex; gap: 2rem; }
+
+  nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-family: 'Segoe UI', sans-serif;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--gold2); }
+
+  /* HERO */
+  .hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    background: url('farm-wheat.jpg') center center / cover no-repeat;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(15,12,7,0.2) 0%,
+      rgba(15,12,7,0.3) 40%,
+      rgba(15,12,7,0.85) 80%,
+      rgba(15,12,7,1) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 4rem;
+    max-width: 800px;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold2);
+    margin-bottom: 1rem;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px; height: 1px;
+    background: var(--gold2);
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  h1 span { color: var(--gold2); }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--muted);
+    font-family: 'Segoe UI', sans-serif;
+    letter-spacing: 0.04em;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 6rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 22px; height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 2.5rem;
+    line-height: 1.15;
+    color: var(--text);
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--border);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* STORY */
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .story-text p {
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+    font-size: 1rem;
+    line-height: 1.85;
+  }
+
+  .story-text p strong { color: var(--text); }
+
+  .story-img {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .story-img img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: 12px;
+  }
+
+  .story-img-caption {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-family: 'Segoe UI', sans-serif;
+    letter-spacing: 0.04em;
+    margin-top: 0.75rem;
+    text-align: center;
+    font-style: italic;
+  }
+
+  /* STATS */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 5rem;
+  }
+
+  .stat-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold2);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  /* PHOTO GRID */
+  .photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .photo-grid img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+  }
+
+  .photo-grid img.tall {
+    height: 100%;
+    grid-row: span 2;
+  }
+
+  /* FEATURE CARDS */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .feature-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .feature-card:hover {
+    border-color: rgba(200,150,42,0.35);
+    transform: translateY(-2px);
+  }
+
+  .feature-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .feature-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+  }
+
+  .feature-desc {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.75;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  /* IOT SECTION */
+  .iot-inner {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .iot-text p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .iot-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .stack-tag {
+    padding: 0.3rem 0.75rem;
+    background: var(--bg3);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-family: 'Consolas', monospace;
+  }
+
+  .iot-visual {
+    background: var(--bg3);
+    border-radius: 10px;
+    padding: 2rem;
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .iot-metric {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .iot-metric:last-child { border-bottom: none; }
+
+  .iot-metric-label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-family: 'Segoe UI', sans-serif;
+    letter-spacing: 0.04em;
+  }
+
+  .iot-metric-value {
+    font-size: 0.9rem;
+    color: var(--green2);
+    font-family: 'Consolas', monospace;
+  }
+
+  /* CONTACT */
+  .contact-inner {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 4rem;
+    text-align: center;
+  }
+
+  .contact-title {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  .contact-desc {
+    color: var(--muted);
+    max-width: 500px;
+    margin: 0 auto 2rem;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    padding: 0.85rem 2rem;
+    background: var(--gold);
+    color: var(--dark);
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    border-radius: 6px;
+    font-family: 'Segoe UI', sans-serif;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--gold2); transform: translateY(-1px); }
+
+  .btn-secondary {
+    padding: 0.85rem 2rem;
+    border: 1px solid rgba(200,150,42,0.4);
+    color: var(--gold2);
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    border-radius: 6px;
+    font-family: 'Segoe UI', sans-serif;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+
+  .btn-secondary:hover { border-color: var(--gold2); transform: translateY(-1px); }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem 4rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  footer a { color: var(--gold); text-decoration: none; }
+  footer a:hover { color: var(--gold2); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    nav ul { gap: 1rem; }
+    .hero-content { padding: 2rem 1.5rem; }
+    section { padding: 4rem 1.5rem; }
+    .story-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    .iot-inner { grid-template-columns: 1fr; }
+    .photo-grid { grid-template-columns: 1fr; }
+    .contact-inner { padding: 2.5rem 1.5rem; }
+    footer { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Sunset Basin Farms</a>
+  <ul>
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#operations">Operations</a></li>
+    <li><a href="#iot">Technology</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Klamath Falls, Oregon · Est. 2022</div>
+    <h1>Sunset Basin <span>Farms</span></h1>
+    <p class="hero-sub">34.75 acres of Southern Oregon farmland — grown from raw ground up.</p>
+  </div>
+</div>
+
+<!-- STATS -->
+<section>
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-number">34.75</div>
+      <div class="stat-label">Acres</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">2022</div>
+      <div class="stat-label">Established</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">2nd</div>
+      <div class="stat-label">Year Winter Wheat</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">6 ac</div>
+      <div class="stat-label">Agrivoltaics Lease</div>
+    </div>
+  </div>
+
+  <!-- STORY -->
+  <div id="story">
+    <div class="section-label">Our Story</div>
+    <h2 class="section-title">Built from the ground up</h2>
+    <div class="story-grid">
+      <div class="story-text">
+        <p>
+          In 2022, my wife Sara and I purchased <strong>34.75 acres in Klamath Falls, Oregon</strong> — 
+          raw land that had sat fallow for years with zero infrastructure. No irrigation. No equipment. 
+          Just open sky, volcanic soil, and a lot of potential.
+        </p>
+        <p>
+          What drew us here wasn't just the land — it was the idea of building something real. 
+          Something our family could work with their hands, watch grow season by season, 
+          and pass down. We relocated from Portland, put down roots in Southern Oregon, 
+          and got to work.
+        </p>
+        <p>
+          Over the last three years we have poured sweat and personal finances into the property. 
+          We now own a <strong>full irrigation system and farming equipment</strong>, and are in our 
+          second year growing winter wheat — baled as small bales for local livestock feed.
+        </p>
+        <p>
+          After this season we plan to transition acreage into <strong>alfalfa</strong>, 
+          with a portion reserved for future cattle grazing. Our mission stays constant: 
+          growing quality livestock feed — wheat, alfalfa, and eventually garlic — 
+          for the Southern Oregon agricultural community.
+        </p>
+      </div>
+      <div class="story-img">
+        <img src="farm-day1.jpg" alt="Sara walking the property on day one — October 2022" />
+        <p class="story-img-caption">Sara walking the property on day one — October 2022</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- OPERATIONS -->
+<section id="operations">
+  <div class="section-label">What We Grow</div>
+  <h2 class="section-title">Farm operations</h2>
+
+  <div class="photo-grid" style="margin-bottom: 3rem;">
+    <img src="farm-wheat.jpg" alt="Winter wheat at golden hour" style="height:320px;" />
+    <img src="farm-tractor.jpg" alt="Discing the field for planting" style="height:320px;" />
+  </div>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🌾</div>
+      <div class="feature-title">Winter Wheat</div>
+      <p class="feature-desc">
+        Currently in our second season growing winter wheat across the property. 
+        Harvested as small bales for local livestock feed operations throughout 
+        Southern Oregon and the Klamath Basin.
+      </p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌿</div>
+      <div class="feature-title">Alfalfa & Future Grazing</div>
+      <p class="feature-desc">
+        Following this wheat season we plan to transition into alfalfa production, 
+        with acreage set aside for eventual cattle grazing — building toward a 
+        diversified livestock feed operation.
+      </p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🐔</div>
+      <div class="feature-title">Pastured Eggs</div>
+      <p class="feature-desc">
+        Our flock of backyard chickens produce fresh eggs available locally through 
+        <a href="https://klamathgrown.org" target="_blank" style="color:var(--gold2); text-decoration:none;">Klamath Grown</a> — 
+        a regional food hub connecting Southern Oregon farms directly with the local community.
+      </p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">☀️</div>
+      <div class="feature-title">Agrivoltaics Lease</div>
+      <p class="feature-desc">
+        Working with a solar developer on a 6-acre agrivoltaics installation — 
+        community solar energy generation with raspberry cultivation beneath the panels. 
+        Sara and I will co-manage farming operations under the lease.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- IOT -->
+<section id="iot">
+  <div class="section-label">Precision Farming</div>
+  <h2 class="section-title">Data-driven agriculture</h2>
+  <div class="iot-inner">
+    <div class="iot-text">
+      <p>
+        Farming is as much about information as it is about labor. At Sunset Basin Farms 
+        we're building an <strong style="color: var(--text);">IoT environmental monitoring platform</strong> to bring 
+        real-time field data into every decision we make.
+      </p>
+      <p>
+        Using LoRaWAN sensors deployed across the property, we collect continuous 
+        soil moisture, temperature, and environmental readings — piped through 
+        ChirpStack and MQTT into Node-RED dashboards running on our local server infrastructure.
+      </p>
+      <p>
+        The goal isn't to replace farmer intuition — it's to give it better information. 
+        Data reduces guesswork on irrigation timing, fertilization schedules, 
+        and soil health tracking across seasons.
+      </p>
+      <div class="iot-stack">
+        <span class="stack-tag">LoRaWAN</span>
+        <span class="stack-tag">Dragino LHT65N-E3</span>
+        <span class="stack-tag">ChirpStack</span>
+        <span class="stack-tag">MQTT</span>
+        <span class="stack-tag">Node-RED</span>
+        <span class="stack-tag">Docker</span>
+        <span class="stack-tag">Grafana</span>
+      </div>
+    </div>
+    <div class="iot-visual">
+      <p style="font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); font-family:'Segoe UI',sans-serif; margin-bottom:1rem;">Live Sensor Data</p>
+      <div class="iot-metric">
+        <span class="iot-metric-label">Soil Moisture</span>
+        <span class="iot-metric-value">42.3%</span>
+      </div>
+      <div class="iot-metric">
+        <span class="iot-metric-label">Soil Temp</span>
+        <span class="iot-metric-value">48.2°F</span>
+      </div>
+      <div class="iot-metric">
+        <span class="iot-metric-label">Ambient Temp</span>
+        <span class="iot-metric-value">38.7°F</span>
+      </div>
+      <div class="iot-metric">
+        <span class="iot-metric-label">Humidity</span>
+        <span class="iot-metric-value">61.8%</span>
+      </div>
+      <div class="iot-metric">
+        <span class="iot-metric-label">Sensor Status</span>
+        <span class="iot-metric-value" style="color:#4CAF50;">● Online</span>
+      </div>
+      <p style="font-size:0.7rem; color:var(--muted); font-family:'Segoe UI',sans-serif; margin-top:1rem; font-style:italic;">Sample data — live dashboard in development</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-label" style="justify-content:center;">Get in Touch</div>
+    <h2 class="contact-title">Partnership & lease inquiries</h2>
+    <p class="contact-desc">
+      Interested in the agrivoltaics project, purchasing livestock feed, 
+      or exploring agricultural data partnerships in Southern Oregon?
+      We'd love to hear from you.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:cjvancura@gmail.com" class="btn-primary">Contact Us</a>
+      <a href="https://goldenvlabs.github.io" target="_blank" class="btn-secondary">Golden V Labs</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Sunset Basin Farms — Klamath Falls, Oregon &nbsp;·&nbsp; Chris & Sara Vancura &nbsp;·&nbsp; Built by <a href="https://goldenvlabs.github.io">Golden V Labs</a></p>
+</footer>
+
+</body>
+</html>
