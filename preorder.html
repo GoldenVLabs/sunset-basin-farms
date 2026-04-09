@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pre-Order Hay Bales & Farm Eggs — Sunset Basin Farms | Klamath Falls, Oregon</title>
+<meta name="description" content="Pre-order winter wheat and rye grass hay bales in small square three-string bales. Fresh ungraded farm eggs available by the dozen. Sunset Basin Farms, Klamath Falls, Oregon.">
+<meta property="og:title" content="Pre-Order Hay Bales & Farm Eggs — Sunset Basin Farms">
+<meta property="og:description" content="Now taking pre-orders for winter wheat & rye grass hay bales. Fresh farm eggs by the dozen. Klamath Falls, Oregon.">
+<meta property="og:image" content="baleforsale.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="Sunset_Basin_New_Logo.png">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --gold:    #C8962A;
+    --gold2:   #E8B84B;
+    --earth:   #3B2A1A;
+    --dark:    #1A1208;
+    --bg:      #0F0C07;
+    --bg2:     #1C1610;
+    --bg3:     #241E14;
+    --green:   #4A6741;
+    --green2:  #6B8F5E;
+    --text:    #EDE8DC;
+    --muted:   #9A9080;
+    --border:  rgba(200,150,42,0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Georgia', serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 4rem;
+    background: rgba(15,12,7,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--gold2);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Georgia', serif;
+  }
+
+  nav ul { list-style: none; display: flex; gap: 2rem; }
+
+  nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-family: 'Segoe UI', sans-serif;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--gold2); }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 101;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--gold2);
+    margin: 5px 0;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  .nav-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  /* PAGE HEADER */
+  .page-header {
+    padding: 10rem 4rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 22px; height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+    line-height: 1.15;
+    color: var(--text);
+  }
+
+  .page-intro {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.85;
+    max-width: 680px;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--border);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* PRODUCTS */
+  section {
+    padding: 4rem 4rem 6rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .product-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .product-card:hover {
+    border-color: rgba(200,150,42,0.35);
+  }
+
+  .product-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .product-body {
+    padding: 1.75rem;
+  }
+
+  .product-tag {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    background: var(--bg3);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 4px;
+    font-size: 0.7rem;
+    color: var(--gold2);
+    font-family: 'Segoe UI', sans-serif;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .product-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+
+  .product-desc {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.75;
+    font-family: 'Segoe UI', sans-serif;
+    margin-bottom: 1.25rem;
+  }
+
+  .product-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .product-detail {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-family: 'Segoe UI', sans-serif;
+    letter-spacing: 0.04em;
+  }
+
+  .product-detail strong {
+    color: var(--text);
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    background: var(--gold);
+    color: var(--dark);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    border-radius: 6px;
+    font-family: 'Segoe UI', sans-serif;
+    transition: background 0.2s, transform 0.15s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover { background: var(--gold2); transform: translateY(-1px); }
+
+  .btn-secondary {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    border: 1px solid rgba(200,150,42,0.4);
+    color: var(--gold2);
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    border-radius: 6px;
+    font-family: 'Segoe UI', sans-serif;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+
+  .btn-secondary:hover { border-color: var(--gold2); transform: translateY(-1px); }
+
+  /* INFO BANNER */
+  .info-banner {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .info-item-title {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-family: 'Segoe UI', sans-serif;
+    margin-bottom: 0.5rem;
+  }
+
+  .info-item-text {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  /* ORDER FORMS */
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-family: 'Segoe UI', sans-serif;
+    margin-bottom: 0.4rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: var(--bg3);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px;
+    color: var(--text);
+    font-size: 0.9rem;
+    font-family: 'Segoe UI', sans-serif;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .form-group select option {
+    background: var(--bg2);
+    color: var(--text);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-submit {
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem 4rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  footer a { color: var(--gold); text-decoration: none; }
+  footer a:hover { color: var(--gold2); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-toggle { display: block; }
+    nav ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background: rgba(15,12,7,0.97);
+      padding: 1.5rem;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    nav ul.open { display: flex; }
+    nav ul li { padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+    nav ul li:last-child { border-bottom: none; }
+    .page-header { padding: 8rem 1.5rem 3rem; }
+    section { padding: 3rem 1.5rem 4rem; }
+    .product-grid { grid-template-columns: 1fr !important; }
+    .info-banner { grid-template-columns: 1fr; gap: 1.5rem; }
+    .product-card .product-body { padding: 1.25rem; }
+    footer { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">
+    <img src="Sunset_Basin_New_Logo.png" alt="Sunset Basin Farms" style="height:44px; width:44px; border-radius:50%; object-fit:cover; vertical-align:middle; margin-right:0.6rem;">
+    Sunset Basin Farms
+  </a>
+  <button class="nav-toggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul>
+    <li><a href="index.html#story">Our Story</a></li>
+    <li><a href="index.html#operations">Operations</a></li>
+    <li><a href="index.html#iot">Technology</a></li>
+    <li><a href="preorder.html" style="color: var(--gold2);">Pre-Order</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="section-label">Pre-Orders Open</div>
+  <h1 class="section-title">Taking Pre-Orders for Hay Bales &amp; Farm Eggs</h1>
+  <p class="page-intro">
+    We are now taking pre-orders for winter wheat and rye grass hay in small square bales.
+    Good livestock feed for cattle, sheep, and goats. We also have fresh farm eggs available
+    by the dozen. Harvest and baling expected this season near Klamath Falls.
+  </p>
+</div>
+
+<div class="divider"></div>
+
+<!-- PRODUCT -->
+<section>
+  <div class="info-banner">
+    <div>
+      <div class="info-item-title">Hay Bale Format</div>
+      <div class="info-item-text">Small square bales<br>Three-string</div>
+    </div>
+    <div>
+      <div class="info-item-title">Harvest Area</div>
+      <div class="info-item-text">Klamath Falls<br>Southern Oregon</div>
+    </div>
+    <div>
+      <div class="info-item-title">Livestock Feed For</div>
+      <div class="info-item-text">Cattle, sheep &amp; goats</div>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 900px; margin: 0 auto;">
+
+    <!-- HAY PRE-ORDER (Wheat & Rye Grass) -->
+    <div class="product-card" id="hay-form">
+      <img class="product-img" src="baleforsale.jpg" alt="Chris and Sara with a finished hay bale at Sunset Basin Farms" style="height: 260px;" loading="lazy" />
+      <div class="product-body">
+        <span class="product-tag">Now Taking Pre-Orders</span>
+        <h3 class="product-title">Hay Bales — Winter Wheat &amp; Rye Grass</h3>
+        <p class="product-desc">
+          Winter wheat and rye grass hay grown and baled right here at Sunset Basin Farms.
+          Three-string small square bales — good quality livestock feed for cattle, sheep, and goats.
+          Harvest and baling expected this season.
+        </p>
+        <div class="product-details" style="margin-bottom: 1.75rem;">
+          <div class="product-detail">
+            <strong>Small Square</strong>
+            Three-string
+          </div>
+          <div class="product-detail">
+            <strong>This Season</strong>
+            Est. harvest
+          </div>
+        </div>
+        <form action="https://formspree.io/f/xjgpdwzp" method="POST">
+          <input type="hidden" name="_subject" value="Pre-Order: Hay Bales">
+          <input type="hidden" name="_next" value="preorder.html?submitted=hay">
+          <div class="form-group">
+            <label for="hay-type">Hay Type</label>
+            <select id="hay-type" name="hay_type" required>
+              <option value="" disabled selected>Select hay type</option>
+              <option value="Winter Wheat">Winter Wheat</option>
+              <option value="Rye Grass">Rye Grass</option>
+              <option value="Both">Both — Winter Wheat &amp; Rye Grass</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="hay-name">Name</label>
+            <input type="text" id="hay-name" name="name" required placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label for="hay-email">Email</label>
+            <input type="email" id="hay-email" name="email" required placeholder="you@example.com">
+          </div>
+          <div class="form-group">
+            <label for="hay-phone">Phone (optional)</label>
+            <input type="tel" id="hay-phone" name="phone" placeholder="(541) 555-0000">
+          </div>
+          <div class="form-group">
+            <label for="hay-quantity">Quantity (# of bales)</label>
+            <input type="text" id="hay-quantity" name="quantity" placeholder="e.g. 50 bales">
+          </div>
+          <div class="form-group">
+            <label for="hay-message">Message</label>
+            <textarea id="hay-message" name="message" placeholder="Pickup preferences, questions, etc."></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn-primary">Submit Hay Pre-Order</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- EGG ORDER -->
+    <div class="product-card" id="egg-form">
+      <img class="product-img" src="Sunset_Basin_New_Logo.png" alt="Sunset Basin Farms" style="height: 260px; object-fit: contain; background: var(--bg3); padding: 1.5rem;" loading="lazy" />
+      <div class="product-body">
+        <span class="product-tag">Order Request</span>
+        <h3 class="product-title">Farm Chicken Eggs — Ungraded</h3>
+        <p class="product-desc">
+          Fresh ungraded eggs from our pastured farm chickens. Available by the dozen —
+          request up to 12 dozen per order. Free-range flock raised right here on the property.
+        </p>
+        <div class="product-details" style="margin-bottom: 1.75rem;">
+          <div class="product-detail">
+            <strong>Up to 12 doz</strong>
+            Per order
+          </div>
+          <div class="product-detail">
+            <strong>Ungraded</strong>
+            Farm fresh
+          </div>
+        </div>
+        <form action="https://formspree.io/f/xojpzdoq" method="POST">
+          <input type="hidden" name="_subject" value="Order Request: Farm Chicken Eggs">
+          <input type="hidden" name="_next" value="preorder.html?submitted=eggs">
+          <div class="form-group">
+            <label for="egg-name">Name</label>
+            <input type="text" id="egg-name" name="name" required placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label for="egg-email">Email</label>
+            <input type="email" id="egg-email" name="email" required placeholder="you@example.com">
+          </div>
+          <div class="form-group">
+            <label for="egg-phone">Phone (optional)</label>
+            <input type="tel" id="egg-phone" name="phone" placeholder="(541) 555-0000">
+          </div>
+          <div class="form-group">
+            <label for="egg-quantity">Quantity (# of dozen)</label>
+            <select id="egg-quantity" name="quantity" required>
+              <option value="" disabled selected>Select quantity</option>
+              <option value="1 dozen">1 dozen</option>
+              <option value="2 dozen">2 dozen</option>
+              <option value="3 dozen">3 dozen</option>
+              <option value="6 dozen">6 dozen</option>
+              <option value="12 dozen">12 dozen</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="egg-message">Message</label>
+            <textarea id="egg-message" name="message" placeholder="Pickup preferences, questions, etc."></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn-primary">Submit Egg Order</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 Sunset Basin Farms — Klamath Falls, Oregon &middot; Chris &amp; Sara Vancura &middot; Built by <a href="https://goldenvlabs.github.io">Golden V Labs</a></p>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const toggle = document.querySelector('.nav-toggle');
+  const menu = document.querySelector('nav ul');
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('open');
+    menu.classList.toggle('open');
+  });
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle.classList.remove('open');
+      menu.classList.remove('open');
+    });
+  });
+
+  // Show success banner after form submission redirect
+  const params = new URLSearchParams(window.location.search);
+  if (params.has('submitted')) {
+    const type = params.get('submitted');
+    const msg = type === 'hay'
+      ? 'Your hay bale pre-order has been submitted! We\'ll be in touch soon.'
+      : 'Your egg order request has been submitted! We\'ll be in touch soon.';
+    const banner = document.createElement('div');
+    banner.style.cssText = 'position:fixed;top:70px;left:50%;transform:translateX(-50%);background:#4A6741;color:#EDE8DC;padding:1rem 2rem;border-radius:8px;font-family:Segoe UI,sans-serif;font-size:0.9rem;z-index:200;text-align:center;max-width:90%;box-shadow:0 4px 20px rgba(0,0,0,0.4);';
+    banner.textContent = msg;
+    document.body.appendChild(banner);
+    setTimeout(() => { banner.style.transition = 'opacity 0.5s'; banner.style.opacity = '0'; }, 5000);
+    setTimeout(() => banner.remove(), 5500);
+    history.replaceState(null, '', 'preorder.html');
+  }
+</script>
+
+</body>
+</html>
