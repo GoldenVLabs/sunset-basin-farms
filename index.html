@@ -3,7 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sunset Basin Farms — Klamath Falls, Oregon</title>
+<title>Sunset Basin Farms — Hay Bales, Farm Eggs & Livestock Feed | Klamath Falls, Oregon</title>
+<meta name="description" content="Sunset Basin Farms in Klamath Falls, Oregon — 34.75 acres growing winter wheat and rye grass hay bales for livestock feed. Pre-order small square bales and fresh farm eggs. Family-owned since 2022.">
+<meta property="og:title" content="Sunset Basin Farms — Klamath Falls, Oregon">
+<meta property="og:description" content="34.75 acres of Southern Oregon farmland. Winter wheat & rye grass hay bales, pastured eggs, and agrivoltaics. Pre-orders now open.">
+<meta property="og:image" content="farm-wheat.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="Sunset_Basin_New_Logo.png">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -69,6 +76,28 @@
   }
 
   nav a:hover { color: var(--gold2); }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 101;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--gold2);
+    margin: 5px 0;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  .nav-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
   /* HERO */
   .hero {
@@ -462,7 +491,22 @@
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
-    nav ul { gap: 1rem; }
+    .nav-toggle { display: block; }
+    nav ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background: rgba(15,12,7,0.97);
+      padding: 1.5rem;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    nav ul.open { display: flex; }
+    nav ul li { padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+    nav ul li:last-child { border-bottom: none; }
     .hero-content { padding: 2rem 1.5rem; }
     section { padding: 4rem 1.5rem; }
     .story-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -482,10 +526,14 @@
     <img src="Sunset_Basin_New_Logo.png" alt="Sunset Basin Farms" style="height:44px; width:44px; border-radius:50%; object-fit:cover; vertical-align:middle; margin-right:0.6rem;">
     Sunset Basin Farms
   </a>
+  <button class="nav-toggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
   <ul>
     <li><a href="#story">Our Story</a></li>
     <li><a href="#operations">Operations</a></li>
     <li><a href="#iot">Technology</a></li>
+    <li><a href="preorder.html">Pre-Order</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -498,6 +546,10 @@
     <div class="hero-eyebrow">Klamath Falls, Oregon · Est. 2022</div>
     <h1>Sunset Basin <span>Farms</span></h1>
     <p class="hero-sub">34.75 acres of Southern Oregon farmland — grown from raw ground up.</p>
+    <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+      <a href="preorder.html" class="btn-primary">Pre-Order Hay &amp; Eggs</a>
+      <a href="#operations" class="btn-secondary">See What We Grow</a>
+    </div>
   </div>
 </div>
 
@@ -552,9 +604,16 @@
         </p>
       </div>
       <div class="story-img">
-        <img src="farm-day1.jpg" alt="Sara walking the property on day one — October 2022" />
+        <img src="farm-day1.jpg" alt="Sara walking the property on day one — October 2022" loading="lazy" />
         <p class="story-img-caption">Sara walking the property on day one — October 2022</p>
       </div>
+    </div>
+
+    <div class="photo-grid" style="margin-top: 3rem;">
+      <img src="groundprep.jpg" alt="Prepping the field from the tractor — Klamath Basin" style="height:280px;" loading="lazy" />
+      <img src="seedindrill.jpg" alt="Loading seed into the drill for planting" style="height:280px;" loading="lazy" />
+      <img src="boylookingcanal.jpg" alt="Working at the irrigation canal headgate" style="height:280px;" loading="lazy" />
+      <img src="WheatAlfalfa2025.jpg" alt="Wheat and alfalfa coming up in the field" style="height:280px;" loading="lazy" />
     </div>
   </div>
 </section>
@@ -567,19 +626,21 @@
   <h2 class="section-title">Farm operations</h2>
 
   <div class="photo-grid" style="margin-bottom: 3rem;">
-    <img src="farm-wheat.jpg" alt="Winter wheat at golden hour" style="height:320px;" />
-    <img src="farm-tractor.jpg" alt="Discing the field for planting" style="height:320px;" />
-    <img src="farm-irrigation.jpg" alt="Irrigation system delivery" style="height:320px;" />
-    <img src="farm-day1.jpg" alt="Day one on the property" style="height:320px;" />
+    <img src="farm-wheat.jpg" alt="Winter wheat at golden hour" style="height:320px;" loading="lazy" />
+    <img src="WheatAlfalfa2025.jpg" alt="Wheat and alfalfa growing in the field — 2025" style="height:320px;" loading="lazy" />
+    <img src="farm-tractor.jpg" alt="Discing the field for planting" style="height:320px;" loading="lazy" />
+    <img src="nighthardwork.jpg" alt="Running the tractor late into the night" style="height:320px;" loading="lazy" />
+    <img src="farm-irrigation.jpg" alt="Irrigation system delivery" style="height:320px;" loading="lazy" />
+    <img src="baleforsale.jpg" alt="Chris and Sara with a finished hay bale" style="height:320px;" loading="lazy" />
   </div>
 
   <div class="feature-grid">
     <div class="feature-card">
       <div class="feature-icon">🌾</div>
-      <div class="feature-title">Winter Wheat</div>
+      <div class="feature-title">Winter Wheat &amp; Rye Grass</div>
       <p class="feature-desc">
-        Currently in our second season growing winter wheat across the property. 
-        Harvested as small bales for local livestock feed operations throughout 
+        Currently in our second season growing winter wheat and rye grass across the property.
+        Harvested as three-string small square bales for local livestock feed operations throughout
         Southern Oregon and the Klamath Basin.
       </p>
     </div>
@@ -681,16 +742,35 @@
     <div class="section-label" style="justify-content:center;">Get in Touch</div>
     <h2 class="contact-title">Partnership & lease inquiries</h2>
     <p class="contact-desc">
-      Interested in the agrivoltaics project, purchasing livestock feed, 
+      Interested in pre-ordering hay bales or farm eggs, the agrivoltaics project,
       or exploring agricultural data partnerships in Southern Oregon?
       We'd love to hear from you.
     </p>
     <div class="contact-links">
-      <a href="/cdn-cgi/l/email-protection#06656c7067686573746746616b676f6a2865696b" class="btn-primary">Contact Us</a>
-      <a href="https://goldenvlabs.github.io" target="_blank" class="btn-secondary">Golden V Labs</a>
+      <a href="preorder.html" class="btn-primary">Pre-Order Now</a>
+      <a href="mailto:Sunsetbasinfarms@sunsetbasinfarms.org" class="btn-secondary">Email Us</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 Sunset Basin Farms — Klamath Falls, Oregon &nbsp;·&nbsp; Chris & Sara Vancura &nbsp;·&nbsp; Built by <a href="https://goldenvlabs.github.io">Golden 
+  <p>&copy; 2026 Sunset Basin Farms — Klamath Falls, Oregon &nbsp;&middot;&nbsp; Chris &amp; Sara Vancura &nbsp;&middot;&nbsp; Built by <a href="https://goldenvlabs.github.io">Golden V Labs</a></p>
+</footer>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const menu = document.querySelector('nav ul');
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('open');
+    menu.classList.toggle('open');
+  });
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle.classList.remove('open');
+      menu.classList.remove('open');
+    });
+  });
+</script>
+
+</body>
+</html>
