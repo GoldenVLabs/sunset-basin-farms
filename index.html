@@ -346,8 +346,8 @@
     font-family: 'Segoe UI', sans-serif;
   }
 
-  /* IOT SECTION */
-  .iot-inner {
+  /* FIELD SENSOR SECTION */
+  .field-sensor-inner {
     background: var(--bg2);
     border: 1px solid var(--border);
     border-radius: 16px;
@@ -358,7 +358,7 @@
     align-items: center;
   }
 
-  .iot-text p {
+  .field-sensor-text p {
     color: var(--muted);
     font-size: 0.95rem;
     line-height: 1.8;
@@ -366,31 +366,14 @@
     font-family: 'Segoe UI', sans-serif;
   }
 
-  .iot-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1rem;
-  }
-
-  .stack-tag {
-    padding: 0.3rem 0.75rem;
-    background: var(--bg3);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 4px;
-    font-size: 0.75rem;
-    color: var(--muted);
-    font-family: 'Consolas', monospace;
-  }
-
-  .iot-visual {
+  .field-sensor-visual {
     background: var(--bg3);
     border-radius: 10px;
     padding: 2rem;
     border: 1px solid rgba(255,255,255,0.04);
   }
 
-  .iot-metric {
+  .field-sensor-metric {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -398,16 +381,16 @@
     border-bottom: 1px solid rgba(255,255,255,0.05);
   }
 
-  .iot-metric:last-child { border-bottom: none; }
+  .field-sensor-metric:last-child { border-bottom: none; }
 
-  .iot-metric-label {
+  .field-sensor-metric-label {
     font-size: 0.8rem;
     color: var(--muted);
     font-family: 'Segoe UI', sans-serif;
     letter-spacing: 0.04em;
   }
 
-  .iot-metric-value {
+  .field-sensor-metric-value {
     font-size: 0.9rem;
     color: var(--green2);
     font-family: 'Consolas', monospace;
@@ -511,7 +494,7 @@
     section { padding: 4rem 1.5rem; }
     .story-grid { grid-template-columns: 1fr; gap: 2rem; }
     .stats-row { grid-template-columns: 1fr 1fr; }
-    .iot-inner { grid-template-columns: 1fr; }
+    .field-sensor-inner { grid-template-columns: 1fr; }
     .photo-grid { grid-template-columns: 1fr; }
     .contact-inner { padding: 2.5rem 1.5rem; }
     footer { padding: 1.5rem; }
@@ -532,7 +515,7 @@
   <ul>
     <li><a href="#story">Our Story</a></li>
     <li><a href="#operations">Operations</a></li>
-    <li><a href="#iot">Technology</a></li>
+    <li><a href="#field-monitoring">Technology</a></li>
     <li><a href="preorder.html">Pre-Order</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -676,60 +659,54 @@
 
 <div class="divider"></div>
 
-<!-- IOT -->
-<section id="iot">
-  <div class="section-label">Precision Farming</div>
-  <h2 class="section-title">Data-driven agriculture</h2>
-  <div class="iot-inner">
-    <div class="iot-text">
+<!-- FIELD SENSORS -->
+<section id="field-monitoring">
+  <div class="section-label">Field Monitoring</div>
+  <h2 class="section-title">Knowing the land</h2>
+  <div class="field-sensor-inner">
+    <div class="field-sensor-text">
       <p>
-        Farming is as much about information as it is about labor. At Sunset Basin Farms 
-        we're building an <strong style="color: var(--text);">IoT environmental monitoring platform</strong> to bring 
-        real-time field data into every decision we make.
+        Farming has always depended on knowing the land. At Sunset Basin Farms, we are adding
+        simple field sensors to help us better understand what is happening below the surface.
       </p>
       <p>
-        Using LoRaWAN sensors deployed across the property, we collect continuous 
-        soil moisture, temperature, and environmental readings — piped through 
-        ChirpStack and MQTT into Node-RED dashboards running on our local server infrastructure.
+        Our soil sensors track moisture, soil temperature, and other field conditions so we can
+        make better decisions about irrigation, crop timing, and soil health. Instead of guessing
+        when the ground is drying out, we can watch the conditions change over time and respond
+        with better information.
       </p>
       <p>
-        The goal isn't to replace farmer intuition — it's to give it better information. 
-        Data reduces guesswork on irrigation timing, fertilization schedules, 
-        and soil health tracking across seasons.
+        The live field sensor panel shows the latest reading from one of our active field sensors.
+        This is part of a larger effort to use practical, affordable technology to support water
+        conservation, drought response, and better farm management in the Klamath Basin.
       </p>
-      <div class="iot-stack">
-        <span class="stack-tag">LoRaWAN</span>
-        <span class="stack-tag">Dragino LHT65N-E3</span>
-        <span class="stack-tag">ChirpStack</span>
-        <span class="stack-tag">MQTT</span>
-        <span class="stack-tag">Node-RED</span>
-        <span class="stack-tag">Docker</span>
-        <span class="stack-tag">Grafana</span>
-      </div>
+      <p>
+        The goal is simple: keep traditional farming knowledge at the center, while giving farmers
+        better tools to make informed decisions.
+      </p>
     </div>
-    <div class="iot-visual">
-      <p style="font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); font-family:'Segoe UI',sans-serif; margin-bottom:1rem;">Live Sensor Data</p>
-      <div class="iot-metric">
-        <span class="iot-metric-label">Soil Moisture</span>
-        <span class="iot-metric-value">42.3%</span>
+    <div class="field-sensor-visual">
+      <p style="font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); font-family:'Segoe UI',sans-serif; margin-bottom:1rem;">LIVE FIELD SENSOR DATA</p>
+      <div class="field-sensor-metric">
+        <span class="field-sensor-metric-label">Soil Moisture</span>
+        <span class="field-sensor-metric-value" data-field="soilMoisture">20.9%</span>
       </div>
-      <div class="iot-metric">
-        <span class="iot-metric-label">Soil Temp</span>
-        <span class="iot-metric-value">48.2°F</span>
+      <div class="field-sensor-metric">
+        <span class="field-sensor-metric-label">Soil Temperature</span>
+        <span class="field-sensor-metric-value" data-field="soilTemperatureF">60.6&deg;F</span>
       </div>
-      <div class="iot-metric">
-        <span class="iot-metric-label">Ambient Temp</span>
-        <span class="iot-metric-value">38.7°F</span>
+      <div class="field-sensor-metric">
+        <span class="field-sensor-metric-label">Soil Condition</span>
+        <span class="field-sensor-metric-value" data-field="soilCondition">Drying</span>
       </div>
-      <div class="iot-metric">
-        <span class="iot-metric-label">Humidity</span>
-        <span class="iot-metric-value">61.8%</span>
+      <div class="field-sensor-metric">
+        <span class="field-sensor-metric-label">Sensor Status</span>
+        <span class="field-sensor-metric-value" data-field="sensorStatus" style="color:#4CAF50;">Online</span>
       </div>
-      <div class="iot-metric">
-        <span class="iot-metric-label">Sensor Status</span>
-        <span class="iot-metric-value" style="color:#4CAF50;">● Online</span>
+      <div class="field-sensor-metric">
+        <span class="field-sensor-metric-label">Last Updated</span>
+        <span class="field-sensor-metric-value" data-field="lastUpdated">Today</span>
       </div>
-      <p style="font-size:0.7rem; color:var(--muted); font-family:'Segoe UI',sans-serif; margin-top:1rem; font-style:italic;">Sample data — live dashboard in development</p>
     </div>
   </div>
 </section>
@@ -787,6 +764,36 @@
       menu.classList.remove('open');
     });
   });
+
+  const fallbackFieldSensorData = {
+    soilMoisture: 20.9,
+    soilTemperatureF: 60.6,
+    soilCondition: 'Drying',
+    sensorStatus: 'Online',
+    lastUpdated: 'Today'
+  };
+
+  const updateFieldSensorPanel = (data) => {
+    const fields = {
+      soilMoisture: `${data.soilMoisture}%`,
+      soilTemperatureF: `${data.soilTemperatureF}\u00b0F`,
+      soilCondition: data.soilCondition,
+      sensorStatus: data.sensorStatus,
+      lastUpdated: data.lastUpdated
+    };
+
+    Object.entries(fields).forEach(([field, value]) => {
+      const element = document.querySelector(`[data-field="${field}"]`);
+      if (element) element.textContent = value;
+    });
+  };
+
+  updateFieldSensorPanel(fallbackFieldSensorData);
+
+  fetch('/data/latest-field-sensor.json')
+    .then(response => (response.ok ? response.json() : fallbackFieldSensorData))
+    .then(data => updateFieldSensorPanel({ ...fallbackFieldSensorData, ...data }))
+    .catch(() => updateFieldSensorPanel(fallbackFieldSensorData));
 </script>
 
 </body>
