@@ -3,690 +3,203 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sunset Basin Farms — Utility Hay, Farm Eggs & Livestock Feed | Klamath Falls, Oregon</title>
-<meta name="description" content="Sunset Basin Farms in Klamath Falls, Oregon — 34.75 acres growing utility mixed hay baled as small square bales for livestock roughage. Order locally grown hay and fresh farm eggs. Family-owned since 2022.">
+<title>Sunset Basin Farms — Family Farm & Precision Agriculture | Klamath Falls, Oregon</title>
+<meta name="description" content="Sunset Basin Farms in Klamath Falls, Oregon — a 35+ acre family farm growing utility hay, pastured eggs and future livestock feed, home of Basin Roots Precision Ag field monitoring.">
 <meta property="og:title" content="Sunset Basin Farms — Klamath Falls, Oregon">
-<meta property="og:description" content="34.75 acres of Southern Oregon farmland. Utility mixed hay small square bales, pastured eggs, and agrivoltaics. Orders now open.">
-<meta property="og:image" content="farm-wheat.jpg">
+<meta property="og:description" content="Family farming, livestock feed, agrivoltaics and practical field technology — built from the ground up in Southern Oregon.">
+<meta property="og:image" content="https://sunsetbasinfarms.org/images/farm-wheat.jpg">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://sunsetbasinfarms.org/">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/png" href="Sunset_Basin_New_Logo.png">
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  :root {
-    --gold:    #C8962A;
-    --gold2:   #E8B84B;
-    --earth:   #3B2A1A;
-    --dark:    #1A1208;
-    --bg:      #0F0C07;
-    --bg2:     #1C1610;
-    --bg3:     #241E14;
-    --green:   #4A6741;
-    --green2:  #6B8F5E;
-    --text:    #EDE8DC;
-    --muted:   #9A9080;
-    --border:  rgba(200,150,42,0.15);
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Georgia', serif;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 4rem;
-    background: rgba(15,12,7,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .logo {
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    color: var(--gold2);
-    text-decoration: none;
-    text-transform: uppercase;
-    font-family: 'Georgia', serif;
-  }
-
-  nav ul { list-style: none; display: flex; gap: 2rem; }
-
-  nav a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-family: 'Segoe UI', sans-serif;
-    transition: color 0.2s;
-  }
-
-  nav a:hover { color: var(--gold2); }
-
-  .nav-toggle {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    z-index: 101;
-  }
-
-  .nav-toggle span {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background: var(--gold2);
-    margin: 5px 0;
-    transition: transform 0.3s, opacity 0.3s;
-  }
-
-  .nav-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-  .nav-toggle.open span:nth-child(2) { opacity: 0; }
-  .nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-  /* HERO */
-  .hero {
-    height: 100vh;
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    overflow: hidden;
-  }
-
-  .hero-img {
-    position: absolute;
-    inset: 0;
-    background: url('farm-wheat.jpg') center center / cover no-repeat;
-  }
-
-  .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(15,12,7,0.2) 0%,
-      rgba(15,12,7,0.3) 40%,
-      rgba(15,12,7,0.85) 80%,
-      rgba(15,12,7,1) 100%
-    );
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 1;
-    padding: 4rem;
-    max-width: 800px;
-  }
-
-  .hero-eyebrow {
-    font-size: 0.75rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold2);
-    margin-bottom: 1rem;
-    font-family: 'Segoe UI', sans-serif;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .hero-eyebrow::before {
-    content: '';
-    display: block;
-    width: 28px; height: 1px;
-    background: var(--gold2);
-  }
-
-  h1 {
-    font-size: clamp(2.5rem, 6vw, 5rem);
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -0.01em;
-    margin-bottom: 1rem;
-    color: var(--text);
-  }
-
-  h1 span { color: var(--gold2); }
-
-  .hero-sub {
-    font-size: 1.1rem;
-    color: var(--muted);
-    font-family: 'Segoe UI', sans-serif;
-    letter-spacing: 0.04em;
-  }
-
-  /* SECTIONS */
-  section {
-    padding: 6rem 4rem;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .section-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 0.75rem;
-    font-family: 'Segoe UI', sans-serif;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .section-label::before {
-    content: '';
-    display: block;
-    width: 22px; height: 1px;
-    background: var(--gold);
-  }
-
-  .section-title {
-    font-size: clamp(1.8rem, 3vw, 2.6rem);
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    margin-bottom: 2.5rem;
-    line-height: 1.15;
-    color: var(--text);
-  }
-
-  .divider {
-    height: 1px;
-    background: var(--border);
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  /* STORY */
-  .story-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
-  }
-
-  .story-text p {
-    color: var(--muted);
-    margin-bottom: 1.25rem;
-    font-size: 1rem;
-    line-height: 1.85;
-  }
-
-  .story-text p strong { color: var(--text); }
-
-  .story-img {
-    border-radius: 12px;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .story-img img {
-    width: 100%;
-    height: 420px;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-    border-radius: 12px;
-  }
-
-  .story-img-caption {
-    font-size: 0.78rem;
-    color: var(--muted);
-    font-family: 'Segoe UI', sans-serif;
-    letter-spacing: 0.04em;
-    margin-top: 0.75rem;
-    text-align: center;
-    font-style: italic;
-  }
-
-  /* STATS */
-  .stats-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-    margin-bottom: 5rem;
-  }
-
-  .stat-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.5rem;
-    text-align: center;
-  }
-
-  .stat-number {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--gold2);
-    line-height: 1;
-    margin-bottom: 0.4rem;
-  }
-
-  .stat-label {
-    font-size: 0.75rem;
-    color: var(--muted);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    font-family: 'Segoe UI', sans-serif;
-  }
-
-  /* PHOTO GRID */
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  .photo-grid img {
-    width: 100%;
-    height: 280px;
-    object-fit: cover;
-    border-radius: 10px;
-    display: block;
-  }
-
-  .photo-grid img.tall {
-    height: 100%;
-    grid-row: span 2;
-  }
-
-  /* FEATURE CARDS */
-  .feature-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .feature-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 2rem;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-
-  .feature-card:hover {
-    border-color: rgba(200,150,42,0.35);
-    transform: translateY(-2px);
-  }
-
-  .feature-icon {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-
-  .feature-title {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 0.75rem;
-  }
-
-  .feature-desc {
-    color: var(--muted);
-    font-size: 0.9rem;
-    line-height: 1.75;
-    font-family: 'Segoe UI', sans-serif;
-  }
-
-  /* FIELD SENSOR SECTION */
-  .field-sensor-inner {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 3rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-  }
-
-  .field-sensor-text p {
-    color: var(--muted);
-    font-size: 0.95rem;
-    line-height: 1.8;
-    margin-bottom: 1rem;
-    font-family: 'Segoe UI', sans-serif;
-  }
-
-  .field-sensor-visual {
-    background: var(--bg3);
-    border-radius: 10px;
-    padding: 2rem;
-    border: 1px solid rgba(255,255,255,0.04);
-  }
-
-  .field-sensor-metric {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-  }
-
-  .field-sensor-metric:last-child { border-bottom: none; }
-
-  .field-sensor-metric-label {
-    font-size: 0.8rem;
-    color: var(--muted);
-    font-family: 'Segoe UI', sans-serif;
-    letter-spacing: 0.04em;
-  }
-
-  .field-sensor-metric-value {
-    font-size: 0.9rem;
-    color: var(--green2);
-    font-family: 'Consolas', monospace;
-  }
-
-  /* CONTACT */
-  .contact-inner {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 4rem;
-    text-align: center;
-  }
-
-  .contact-title {
-    font-size: clamp(1.5rem, 2.5vw, 2rem);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: var(--text);
-  }
-
-  .contact-desc {
-    color: var(--muted);
-    max-width: 500px;
-    margin: 0 auto 2rem;
-    font-family: 'Segoe UI', sans-serif;
-    font-size: 0.95rem;
-    line-height: 1.75;
-  }
-
-  .contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    padding: 0.85rem 2rem;
-    background: var(--gold);
-    color: var(--dark);
-    font-weight: 700;
-    font-size: 0.9rem;
-    letter-spacing: 0.04em;
-    text-decoration: none;
-    border-radius: 6px;
-    font-family: 'Segoe UI', sans-serif;
-    transition: background 0.2s, transform 0.15s;
-  }
-
-  .btn-primary:hover { background: var(--gold2); transform: translateY(-1px); }
-
-  .btn-secondary {
-    padding: 0.85rem 2rem;
-    border: 1px solid rgba(200,150,42,0.4);
-    color: var(--gold2);
-    font-size: 0.9rem;
-    letter-spacing: 0.04em;
-    text-decoration: none;
-    border-radius: 6px;
-    font-family: 'Segoe UI', sans-serif;
-    transition: border-color 0.2s, transform 0.15s;
-  }
-
-  .btn-secondary:hover { border-color: var(--gold2); transform: translateY(-1px); }
-
-  /* FOOTER */
-  footer {
-    text-align: center;
-    padding: 2rem 4rem;
-    border-top: 1px solid var(--border);
-    color: var(--muted);
-    font-size: 0.78rem;
-    letter-spacing: 0.06em;
-    font-family: 'Segoe UI', sans-serif;
-  }
-
-  footer a { color: var(--gold); text-decoration: none; }
-  footer a:hover { color: var(--gold2); }
-
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-toggle { display: block; }
-    nav ul {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      flex-direction: column;
-      background: rgba(15,12,7,0.97);
-      padding: 1.5rem;
-      gap: 0;
-      border-bottom: 1px solid var(--border);
-    }
-    nav ul.open { display: flex; }
-    nav ul li { padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
-    nav ul li:last-child { border-bottom: none; }
-    .hero-content { padding: 2rem 1.5rem; }
-    section { padding: 4rem 1.5rem; }
-    .story-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .stats-row { grid-template-columns: 1fr 1fr; }
-    .field-sensor-inner { grid-template-columns: 1fr; }
-    .photo-grid { grid-template-columns: 1fr; }
-    .contact-inner { padding: 2.5rem 1.5rem; }
-    footer { padding: 1.5rem; }
-  }
-</style>
+<link rel="icon" type="image/png" href="images/sunset-basin-logo.png">
+<link rel="stylesheet" href="css/site.css">
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="logo">
-    <img src="Sunset_Basin_New_Logo.png" alt="Sunset Basin Farms" style="height:44px; width:44px; border-radius:50%; object-fit:cover; vertical-align:middle; margin-right:0.6rem;">
+  <a href="index.html" class="logo">
+    <img src="images/sunset-basin-logo.png" alt="Sunset Basin Farms logo">
     Sunset Basin Farms
   </a>
-  <button class="nav-toggle" aria-label="Toggle menu">
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav">
     <span></span><span></span><span></span>
   </button>
-  <ul>
-    <li><a href="#story">Our Story</a></li>
-    <li><a href="#operations">Operations</a></li>
-    <li><a href="#field-monitoring">Technology</a></li>
-    <li><a href="preorder.html">Order Hay</a></li>
+  <ul id="primary-nav">
+    <li><a href="index.html" aria-current="page">Home</a></li>
+    <li><a href="our-farm.html">Our Farm</a></li>
+    <li><a href="#what-we-grow">What We Grow</a></li>
+    <li><a href="basin-roots/">Basin Roots Precision Ag</a></li>
+    <li><a href="our-farm.html#agrivoltaics">Agrivoltaics</a></li>
+    <li><a href="preorder.html" class="nav-cta">Order Hay &amp; Eggs</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="hero-img"></div>
+<header class="hero">
+  <div class="hero-img" style="background-image:url('images/farm-wheat.jpg');" role="img" aria-label="Winter wheat field at golden hour at Sunset Basin Farms"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Klamath Falls, Oregon · Est. 2022</div>
-    <h1>Sunset Basin <span>Farms</span></h1>
-    <p class="hero-sub">34.75 acres of Southern Oregon farmland — grown from raw ground up.</p>
-    <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+    <p class="hero-eyebrow">Klamath Falls, Oregon · Est. 2022</p>
+    <h1>Rooted in the Klamath Basin.<br>Building for the Future.</h1>
+    <p class="hero-sub">Family farming, livestock feed, agrivoltaics and practical field technology—built from the ground up in Southern Oregon.</p>
+    <div class="hero-actions">
       <a href="preorder.html" class="btn-primary">Order Hay &amp; Eggs</a>
-      <a href="#operations" class="btn-secondary">See What We Grow</a>
+      <a href="basin-roots/" class="btn-secondary">Explore Basin Roots</a>
     </div>
   </div>
-</div>
+</header>
 
 <!-- STATS -->
-<section>
+<section aria-label="Farm overview">
   <div class="stats-row">
     <div class="stat-card">
-      <div class="stat-number">34.75</div>
+      <div class="stat-number">35+</div>
       <div class="stat-label">Acres</div>
     </div>
     <div class="stat-card">
-      <div class="stat-number">2022</div>
-      <div class="stat-label">Established</div>
+      <div class="stat-number">Family</div>
+      <div class="stat-label">Operated</div>
     </div>
     <div class="stat-card">
-      <div class="stat-number">2nd</div>
-      <div class="stat-label">Year Winter Wheat</div>
+      <div class="stat-number">Klamath Falls</div>
+      <div class="stat-label">Oregon</div>
     </div>
     <div class="stat-card">
-      <div class="stat-number">6 ac</div>
-      <div class="stat-label">Agrivoltaics Lease</div>
-    </div>
-  </div>
-
-  <!-- STORY -->
-  <div id="story">
-    <div class="section-label">Our Story</div>
-    <h2 class="section-title">Built from the ground up</h2>
-    <div class="story-grid">
-      <div class="story-text">
-        <p>
-          In 2022, my wife Sara and I purchased <strong>34.75 acres in Klamath Falls, Oregon</strong> — 
-          raw land that had sat fallow for years with zero infrastructure. No irrigation. No equipment. 
-          Just open sky, volcanic soil, and a lot of potential.
-        </p>
-        <p>
-          What drew us here wasn't just the land — it was the idea of building something real. 
-          Something our family could work with their hands, watch grow season by season, 
-          and pass down. We relocated from Portland, put down roots in Southern Oregon, 
-          and got to work.
-        </p>
-        <p>
-          Over the last three years we have poured sweat and personal finances into the property. 
-          We now own a <strong>full irrigation system and farming equipment</strong>, and are in our 
-          second year growing winter wheat — baled as small bales for local livestock feed.
-        </p>
-        <p>
-          After this season we plan to transition acreage into <strong>alfalfa</strong>, 
-          with a portion reserved for future cattle grazing. Our mission stays constant: 
-          growing quality livestock feed — wheat, alfalfa, and eventually garlic — 
-          for the Southern Oregon agricultural community.
-        </p>
-      </div>
-      <div class="story-img">
-        <img src="farm-day1.jpg" alt="Sara walking the property on day one — October 2022" loading="lazy" />
-        <p class="story-img-caption">Sara walking the property on day one — October 2022</p>
-      </div>
-    </div>
-
-    <div class="photo-grid" style="margin-top: 3rem;">
-      <img src="groundprep.jpg" alt="Prepping the field from the tractor — Klamath Basin" style="height:280px;" loading="lazy" />
-      <img src="seedindrill.jpg" alt="Loading seed into the drill for planting" style="height:280px;" loading="lazy" />
-      <img src="boylookingcanal.jpg" alt="Working at the irrigation canal headgate" style="height:280px;" loading="lazy" />
-      <img src="WheatAlfalfa2025.jpg" alt="Wheat and alfalfa coming up in the field" style="height:280px;" loading="lazy" />
+      <div class="stat-number">Farm + Tech</div>
+      <div class="stat-label">Precision Agriculture</div>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- OPERATIONS -->
-<section id="operations">
-  <div class="section-label">What We Grow</div>
-  <h2 class="section-title">Farm operations</h2>
-
-  <div class="photo-grid" style="margin-bottom: 3rem;">
-    <img src="farm-wheat.jpg" alt="Winter wheat at golden hour" style="height:320px;" loading="lazy" />
-    <img src="WheatAlfalfa2025.jpg" alt="Wheat and alfalfa growing in the field — 2025" style="height:320px;" loading="lazy" />
-    <img src="farm-tractor.jpg" alt="Discing the field for planting" style="height:320px;" loading="lazy" />
-    <img src="nighthardwork.jpg" alt="Running the tractor late into the night" style="height:320px;" loading="lazy" />
-    <img src="farm-irrigation.jpg" alt="Irrigation system delivery" style="height:320px;" loading="lazy" />
-    <img src="TractorBaler575.jpg" alt="New Holland 575 baler making two-string small square bales at Sunset Basin Farms" style="height:320px;" loading="lazy" />
-  </div>
-
-  <div class="feature-grid">
-    <div class="feature-card">
-      <div class="feature-icon">🌾</div>
-      <div class="feature-title">Utility Hay — Small Square Bales</div>
-      <p class="feature-desc">
-        Locally grown and baled at Sunset Basin Farms. Utility mixed hay from a drought-year field —
-        small square bales sold as livestock roughage for cattle, goats, sheep, and bedding.
-        Available now in limited quantity.
-      </p>
+<!-- TWO BUSINESS PATHS -->
+<section aria-label="Our two businesses">
+  <div class="section-label">One Family Operation, Two Paths</div>
+  <h2 class="section-title">The farm and the technology it grew</h2>
+  <div class="path-grid">
+    <div class="path-card">
+      <img class="path-logo round" src="images/sunset-basin-logo.png" alt="Sunset Basin Farms logo">
+      <h3>Sunset Basin Farms</h3>
+      <p>Locally grown hay, eggs and future livestock-feed crops for the Southern Oregon agricultural community.</p>
+      <a href="our-farm.html" class="btn-primary">Explore the Farm</a>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon">🌿</div>
-      <div class="feature-title">Alfalfa & Future Grazing</div>
-      <p class="feature-desc">
-        Following this wheat season we plan to transition into alfalfa production, 
-        with acreage set aside for eventual cattle grazing — building toward a 
-        diversified livestock feed operation.
-      </p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🐔</div>
-      <div class="feature-title">Pastured Eggs</div>
-      <p class="feature-desc">
-        Our flock of backyard chickens produce fresh eggs available locally through 
-        <a href="https://klamathgrown.org" target="_blank" style="color:var(--gold2); text-decoration:none;">Klamath Grown</a> — 
-        a regional food hub connecting Southern Oregon farms directly with the local community.
-      </p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">☀️</div>
-      <div class="feature-title">Agrivoltaics Lease</div>
-      <p class="feature-desc">
-        Working with a solar developer on a 6-acre agrivoltaics installation — 
-        community solar energy generation with raspberry cultivation beneath the panels. 
-        Sara and I will co-manage farming operations under the lease.
-      </p>
+    <div class="path-card roots">
+      <img class="path-logo" src="images/basin-roots-logo-light.png" alt="Basin Roots Precision Ag logo">
+      <span class="path-tag">A Sunset Basin Farms company</span>
+      <h3>Basin Roots Precision Ag</h3>
+      <p>Farm-built soil, water and field monitoring designed to support smarter irrigation and management decisions.</p>
+      <a href="basin-roots/" class="btn-teal">Explore Basin Roots</a>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- FIELD SENSORS -->
+<!-- STORY PREVIEW -->
+<section id="story">
+  <div class="section-label">Our Story</div>
+  <h2 class="section-title">Built from the ground up</h2>
+  <div class="story-grid">
+    <div class="story-text">
+      <p>
+        In 2022, my wife Sara and I purchased <strong>more than 35 acres in Klamath Falls, Oregon</strong> —
+        raw land that had sat fallow for years with zero infrastructure. No irrigation. No equipment.
+        Just open sky, volcanic soil, and a lot of potential.
+      </p>
+      <p>
+        We relocated from Portland, put down roots in Southern Oregon, and got to work building
+        something real — something our family could work with their hands, watch grow season by
+        season, and pass down.
+      </p>
+      <a href="our-farm.html" class="btn-primary">Read Our Full Story</a>
+    </div>
+    <div class="story-img">
+      <img src="images/farm-day1.jpg" alt="Sara walking the property on day one — October 2022" width="1600" height="900" loading="lazy">
+      <p class="story-img-caption">Sara walking the property on day one — October 2022</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHAT WE GROW -->
+<section id="what-we-grow" class="band" style="max-width:none;">
+  <div style="max-width:1140px; margin:0 auto;">
+    <div class="section-label">What We Grow</div>
+    <h2 class="section-title">From the field</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <img src="images/TractorBaler575.jpg" alt="New Holland 575 baler making two-string small square bales at Sunset Basin Farms" loading="lazy">
+        <div class="feature-body">
+          <h3 class="feature-title">Utility Hay</h3>
+          <p class="feature-desc">
+            Utility mixed hay in small square bales, grown and baled on the farm.
+            Sold as livestock roughage for cattle, goats and sheep — available in limited quantity.
+          </p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <img src="images/WheatAlfalfa2025.jpg" alt="Wheat and alfalfa coming up in the field at Sunset Basin Farms" loading="lazy">
+        <div class="feature-body">
+          <h3 class="feature-title">Alfalfa &amp; Future Grazing</h3>
+          <p class="feature-desc">
+            Acreage is transitioning to alfalfa production, with a portion reserved for
+            future cattle grazing — building toward a diversified feed operation.
+          </p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <img src="images/Eggsforsaleone.jpg" alt="Fresh farm eggs from the pastured flock at Sunset Basin Farms" loading="lazy">
+        <div class="feature-body">
+          <h3 class="feature-title">Pastured Eggs</h3>
+          <p class="feature-desc">
+            Fresh ungraded eggs from our free-range flock, available locally and through
+            <a href="https://klamathgrown.org" target="_blank" rel="noopener">Klamath Grown</a>.
+          </p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <img src="images/agrivoltaics-representative-image.jpg" alt="Representative illustration of crops growing beneath elevated solar panels in an agrivoltaic farm." loading="lazy">
+        <div class="feature-body">
+          <h3 class="feature-title">Agrivoltaics &amp; Specialty Crops</h3>
+          <p class="feature-desc">
+            A 6-acre community solar lease with raspberry cultivation planned beneath the
+            panels — farming and energy production sharing the same ground.
+          </p>
+          <p class="feature-desc" style="margin-top:0.6rem; font-size:0.76rem; font-style:italic;">
+            Representative illustration of an agrivoltaic farm. The Sunset Basin Farms project is currently in development.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BASIN ROOTS PREVIEW -->
 <section id="field-monitoring">
-  <div class="section-label">Field Monitoring</div>
-  <h2 class="section-title">Knowing the land</h2>
-  <div class="field-sensor-inner">
-    <div class="field-sensor-text">
-      <p>
-        Farming has always depended on knowing the land. At Sunset Basin Farms, we are adding
-        simple field sensors to help us better understand what is happening below the surface.
-      </p>
-      <p>
-        Our soil sensors track moisture, soil temperature, and other field conditions so we can
-        make better decisions about irrigation, crop timing, and soil health. Instead of guessing
-        when the ground is drying out, we can watch the conditions change over time and respond
-        with better information.
-      </p>
-      <p>
-        The live field sensor panel shows the latest reading from one of our active field sensors.
-        This is part of a larger effort to use practical, affordable technology to support water
-        conservation, drought response, and better farm management in the Klamath Basin.
-      </p>
-      <p>
-        The goal is simple: keep traditional farming knowledge at the center, while giving farmers
-        better tools to make informed decisions.
-      </p>
-    </div>
+  <div class="section-label teal">Basin Roots Precision Ag</div>
+  <h2 class="section-title">Precision agriculture built on a working farm</h2>
+  <p class="section-intro">
+    Basin Roots Precision Ag began at Sunset Basin Farms as a way to better understand soil
+    moisture, temperature, conductivity and changing field conditions. Today, the system combines
+    field sensors, LoRaWAN connectivity, cellular gateways, live dashboards and automated monitoring.
+  </p>
+  <p class="section-intro" style="margin-top:-1.5rem;">
+    It is designed for the realities of working agriculture: remote fields, limited connectivity,
+    drought, irrigation timing and the need for practical—not complicated—data.
+  </p>
+
+  <div class="photo-grid" style="margin-bottom:2rem;">
+    <img src="images/basin-roots-gateway-installation.jpg" alt="Installing the LoRaWAN gateway antenna on the barn roof at Sunset Basin Farms" loading="lazy">
+    <img src="images/basin-roots-soil-gauges.png" alt="Soil sensor readout gauges showing live moisture, conductivity and temperature from two field sensors" style="object-fit:contain; background:#14181D;" loading="lazy">
+    <img src="images/basin-roots-dashboard.png" alt="Basin Roots dashboard charting a month of soil moisture, temperature, conductivity and battery voltage" style="object-fit:contain; background:#14181D;" loading="lazy">
     <div class="field-sensor-visual">
-      <p style="font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); font-family:'Segoe UI',sans-serif; margin-bottom:1rem;">LIVE FIELD SENSOR DATA</p>
+      <p class="panel-heading" data-field="panelStatus">Last known reading — live feed temporarily unavailable</p>
       <div class="field-sensor-metric">
         <span class="field-sensor-metric-label">Soil Moisture</span>
         <span class="field-sensor-metric-value" data-field="soilMoisture">20.9%</span>
@@ -701,7 +214,7 @@
       </div>
       <div class="field-sensor-metric">
         <span class="field-sensor-metric-label">Sensor Status</span>
-        <span class="field-sensor-metric-value" data-field="sensorStatus" style="color:#4CAF50;">Online</span>
+        <span class="field-sensor-metric-value" data-field="sensorStatus" style="color:#2E7D32;">Online</span>
       </div>
       <div class="field-sensor-metric">
         <span class="field-sensor-metric-label">Last Updated</span>
@@ -709,59 +222,86 @@
       </div>
     </div>
   </div>
+
+  <div class="hero-actions" style="margin-top:0.5rem;">
+    <a href="basin-roots/" class="btn-teal">Learn About Basin Roots</a>
+    <a href="basin-roots/#contact" class="btn-secondary">Discuss a Pilot</a>
+  </div>
 </section>
 
 <div class="divider"></div>
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="contact-inner">
-    <div class="section-label" style="justify-content:center;">Get in Touch</div>
-    <h2 class="contact-title">Partnership & lease inquiries</h2>
-    <p class="contact-desc">
-      Interested in ordering utility hay or farm eggs, the agrivoltaics project,
-      or exploring agricultural data partnerships in Southern Oregon?
-      We'd love to hear from you.
-    </p>
-    <p class="contact-desc" style="margin-bottom: 0.75rem;">
-      <a href="tel:+15412247743" style="color: var(--gold2); text-decoration: none;">541-224-7743</a>
-      &nbsp;&middot;&nbsp;
-      <a href="mailto:Sunsetbasinfarms@sunsetbasinfarms.org" style="color: var(--gold2); text-decoration: none;">Sunsetbasinfarms@sunsetbasinfarms.org</a>
-    </p>
-    <div class="contact-links" style="margin-bottom: 1.5rem;">
-      <a href="preorder.html" class="btn-primary">Order Now</a>
-      <a href="mailto:Sunsetbasinfarms@sunsetbasinfarms.org" class="btn-secondary">Email Us</a>
-      <a href="tel:+15412247743" class="btn-secondary">Call Us</a>
+  <div class="section-label">Get in Touch</div>
+  <h2 class="section-title">Contact us</h2>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <h3>Farm Products</h3>
+      <p>Hay, eggs and local farm inquiries — orders, pickup questions and anything Sunset Basin Farms.</p>
+      <p>
+        <a class="plain" href="tel:+15412247743">541-224-7743</a><br>
+        <a class="plain" href="mailto:sunsetbasinfarms@sunsetbasinfarms.org">sunsetbasinfarms@sunsetbasinfarms.org</a>
+      </p>
+      <div class="contact-actions">
+        <a href="preorder.html" class="btn-primary">Order Hay &amp; Eggs</a>
+        <a href="mailto:sunsetbasinfarms@sunsetbasinfarms.org" class="btn-secondary">Email the Farm</a>
+      </div>
+      <p style="margin-top:1.25rem; margin-bottom:0;">
+        <a class="plain" href="https://www.facebook.com/SunsetBasinFarms" target="_blank" rel="noopener" aria-label="Sunset Basin Farms on Facebook">Facebook</a>
+        &nbsp;&middot;&nbsp;
+        <a class="plain" href="https://www.instagram.com/sunsetbasinfarmsllc/" target="_blank" rel="noopener" aria-label="Sunset Basin Farms on Instagram">Instagram</a>
+      </p>
     </div>
-    <div style="display:flex; justify-content:center; gap:1.5rem;">
-      <a href="https://www.facebook.com/SunsetBasinFarms" target="_blank" style="color:var(--muted); text-decoration:none; font-family:'Segoe UI',sans-serif; font-size:0.85rem; transition:color 0.2s;" onmouseover="this.style.color='var(--gold2)'" onmouseout="this.style.color='var(--muted)'">Facebook</a>
-      <a href="https://www.instagram.com/sunsetbasinfarmsllc/" target="_blank" style="color:var(--muted); text-decoration:none; font-family:'Segoe UI',sans-serif; font-size:0.85rem; transition:color 0.2s;" onmouseover="this.style.color='var(--gold2)'" onmouseout="this.style.color='var(--muted)'">Instagram</a>
+    <div class="contact-card roots">
+      <h3>Precision Agriculture</h3>
+      <p>Demonstrations, partnerships and pilot projects with Basin Roots Precision Ag — a Sunset Basin Farms company.</p>
+      <p>
+        <a class="plain" href="mailto:basinroots@gmail.com">basinroots@gmail.com</a>
+      </p>
+      <div class="contact-actions">
+        <a href="basin-roots/#contact" class="btn-teal">Discuss a Pilot</a>
+        <a href="basin-roots/" class="btn-secondary">Explore Basin Roots</a>
+      </div>
+      <p style="margin-top:1.25rem; margin-bottom:0;">
+        <a class="plain" href="https://www.facebook.com/BasinRootsPrecisionAg/" target="_blank" rel="noopener" aria-label="Basin Roots Precision Ag on Facebook">Facebook</a>
+        &nbsp;&middot;&nbsp;
+        <a class="plain" href="https://www.instagram.com/basinrootsprecisionag/" target="_blank" rel="noopener" aria-label="Basin Roots Precision Ag on Instagram">Instagram</a>
+      </p>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>&copy; 2026 Sunset Basin Farms — Klamath Falls, Oregon &nbsp;&middot;&nbsp; Chris &amp; Sara Vancura &nbsp;&middot;&nbsp; <a href="tel:+15412247743">541-224-7743</a></p>
-  <p style="margin-top:0.5rem;">
-    <a href="https://www.facebook.com/SunsetBasinFarms" target="_blank">Facebook</a>
+  <p>&copy; 2026 Sunset Basin Farms LLC — Klamath Falls, Oregon &nbsp;&middot;&nbsp; Chris &amp; Sara Vancura &nbsp;&middot;&nbsp; <a href="tel:+15412247743">541-224-7743</a></p>
+  <p>Basin Roots Precision Ag is a division of Sunset Basin Farms LLC.</p>
+  <p>
+    Sunset Basin Farms:
+    <a href="https://www.facebook.com/SunsetBasinFarms" target="_blank" rel="noopener" aria-label="Sunset Basin Farms on Facebook">Facebook</a>
+    |
+    <a href="https://www.instagram.com/sunsetbasinfarmsllc/" target="_blank" rel="noopener" aria-label="Sunset Basin Farms on Instagram">Instagram</a>
     &nbsp;&middot;&nbsp;
-    <a href="https://www.instagram.com/sunsetbasinfarmsllc/" target="_blank">Instagram</a>
-    &nbsp;&middot;&nbsp;
-    Built by <a href="https://goldenvlabs.github.io">Golden V Labs</a>
+    Basin Roots Precision Ag:
+    <a href="https://www.facebook.com/BasinRootsPrecisionAg/" target="_blank" rel="noopener" aria-label="Basin Roots Precision Ag on Facebook">Facebook</a>
+    |
+    <a href="https://www.instagram.com/basinrootsprecisionag/" target="_blank" rel="noopener" aria-label="Basin Roots Precision Ag on Instagram">Instagram</a>
   </p>
+  <p>Built by <a href="https://goldenvlabs.github.io">Golden V Labs</a></p>
 </footer>
 
 <script>
   const toggle = document.querySelector('.nav-toggle');
   const menu = document.querySelector('nav ul');
   toggle.addEventListener('click', () => {
-    toggle.classList.toggle('open');
+    const open = toggle.classList.toggle('open');
     menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
   });
   menu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       toggle.classList.remove('open');
       menu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
     });
   });
 
@@ -776,7 +316,7 @@
   const updateFieldSensorPanel = (data) => {
     const fields = {
       soilMoisture: `${data.soilMoisture}%`,
-      soilTemperatureF: `${data.soilTemperatureF}\u00b0F`,
+      soilTemperatureF: `${data.soilTemperatureF}°F`,
       soilCondition: data.soilCondition,
       sensorStatus: data.sensorStatus,
       lastUpdated: data.lastUpdated
@@ -788,12 +328,28 @@
     });
   };
 
+  const setPanelStatus = (live) => {
+    const heading = document.querySelector('[data-field="panelStatus"]');
+    if (heading) heading.textContent = live
+      ? 'Live field data'
+      : 'Last known reading — live feed temporarily unavailable';
+  };
+
   updateFieldSensorPanel(fallbackFieldSensorData);
 
   fetch('/data/latest-field-sensor.json')
-    .then(response => (response.ok ? response.json() : fallbackFieldSensorData))
-    .then(data => updateFieldSensorPanel({ ...fallbackFieldSensorData, ...data }))
-    .catch(() => updateFieldSensorPanel(fallbackFieldSensorData));
+    .then(response => {
+      if (!response.ok) throw new Error('feed unavailable');
+      return response.json();
+    })
+    .then(data => {
+      updateFieldSensorPanel({ ...fallbackFieldSensorData, ...data });
+      setPanelStatus(true);
+    })
+    .catch(() => {
+      updateFieldSensorPanel(fallbackFieldSensorData);
+      setPanelStatus(false);
+    });
 </script>
 
 </body>

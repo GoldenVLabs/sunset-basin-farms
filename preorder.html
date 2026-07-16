@@ -7,273 +7,23 @@
 <meta name="description" content="Order utility mixed hay in small square bales — locally grown at Sunset Basin Farms in Klamath Falls, Oregon. Suitable for cattle, goats, sheep, and roughage. Fresh farm eggs also available.">
 <meta property="og:title" content="Order Utility Hay & Farm Eggs — Sunset Basin Farms">
 <meta property="og:description" content="Now taking orders for utility mixed hay small square bales. Locally grown in Klamath Falls, Oregon. Suitable for cattle, goats, sheep, and roughage.">
-<meta property="og:image" content="TractorBaler575.jpg">
+<meta property="og:image" content="https://sunsetbasinfarms.org/images/TractorBaler575.jpg">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://sunsetbasinfarms.org/preorder.html">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/png" href="Sunset_Basin_New_Logo.png">
+<link rel="icon" type="image/png" href="images/sunset-basin-logo.png">
+<link rel="stylesheet" href="css/site.css">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  /* Page-specific: product cards and pricing table */
+  .page-header { padding: 9rem 3rem 3rem; max-width: 1140px; margin: 0 auto; }
+  .page-intro { color: var(--muted); font-size: 1rem; line-height: 1.85; max-width: 680px; font-family: var(--sans); }
 
-  :root {
-    --gold:    #C8962A;
-    --gold2:   #E8B84B;
-    --earth:   #3B2A1A;
-    --dark:    #1A1208;
-    --bg:      #0F0C07;
-    --bg2:     #1C1610;
-    --bg3:     #241E14;
-    --green:   #4A6741;
-    --green2:  #6B8F5E;
-    --text:    #EDE8DC;
-    --muted:   #9A9080;
-    --border:  rgba(200,150,42,0.15);
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Georgia', serif;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 4rem;
-    background: rgba(15,12,7,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .logo {
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    color: var(--gold2);
-    text-decoration: none;
-    text-transform: uppercase;
-    font-family: 'Georgia', serif;
-  }
-
-  nav ul { list-style: none; display: flex; gap: 2rem; }
-
-  nav a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-family: 'Segoe UI', sans-serif;
-    transition: color 0.2s;
-  }
-
-  nav a:hover { color: var(--gold2); }
-
-  .nav-toggle {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    z-index: 101;
-  }
-
-  .nav-toggle span {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background: var(--gold2);
-    margin: 5px 0;
-    transition: transform 0.3s, opacity 0.3s;
-  }
-
-  .nav-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-  .nav-toggle.open span:nth-child(2) { opacity: 0; }
-  .nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-  /* PAGE HEADER */
-  .page-header {
-    padding: 10rem 4rem 4rem;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .section-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 0.75rem;
-    font-family: 'Segoe UI', sans-serif;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .section-label::before {
-    content: '';
-    display: block;
-    width: 22px; height: 1px;
-    background: var(--gold);
-  }
-
-  .section-title {
-    font-size: clamp(1.8rem, 3vw, 2.6rem);
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    margin-bottom: 1rem;
-    line-height: 1.15;
-    color: var(--text);
-  }
-
-  .page-intro {
-    color: var(--muted);
-    font-size: 1rem;
-    line-height: 1.85;
-    max-width: 680px;
-    font-family: 'Segoe UI', sans-serif;
-  }
-
-  .divider {
-    height: 1px;
-    background: var(--border);
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  /* PRODUCTS */
-  section {
-    padding: 4rem 4rem 6rem;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .product-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    overflow: hidden;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-
-  .product-card:hover {
-    border-color: rgba(200,150,42,0.35);
-  }
-
-  .product-img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    display: block;
-  }
-
-  .product-body {
-    padding: 1.75rem;
-  }
-
-  .product-tag {
-    display: inline-block;
-    padding: 0.2rem 0.6rem;
-    background: var(--bg3);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 4px;
-    font-size: 0.7rem;
-    color: var(--gold2);
-    font-family: 'Segoe UI', sans-serif;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-  }
-
-  .product-title {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 0.5rem;
-  }
-
-  .product-desc {
-    color: var(--muted);
-    font-size: 0.9rem;
-    line-height: 1.75;
-    font-family: 'Segoe UI', sans-serif;
-    margin-bottom: 1.25rem;
-  }
-
-  .product-details {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .product-detail {
-    font-size: 0.78rem;
-    color: var(--muted);
-    font-family: 'Segoe UI', sans-serif;
-    letter-spacing: 0.04em;
-  }
-
-  .product-detail strong {
-    color: var(--text);
-    display: block;
-    font-size: 1rem;
-    margin-bottom: 0.15rem;
-  }
-
-  .btn-primary {
-    display: inline-block;
-    padding: 0.75rem 1.75rem;
-    background: var(--gold);
-    color: var(--dark);
-    font-weight: 700;
-    font-size: 0.85rem;
-    letter-spacing: 0.04em;
-    text-decoration: none;
-    border-radius: 6px;
-    font-family: 'Segoe UI', sans-serif;
-    transition: background 0.2s, transform 0.15s;
-    border: none;
-    cursor: pointer;
-  }
-
-  .btn-primary:hover { background: var(--gold2); transform: translateY(-1px); }
-
-  .btn-secondary {
-    display: inline-block;
-    padding: 0.75rem 1.75rem;
-    border: 1px solid rgba(200,150,42,0.4);
-    color: var(--gold2);
-    font-size: 0.85rem;
-    letter-spacing: 0.04em;
-    text-decoration: none;
-    border-radius: 6px;
-    font-family: 'Segoe UI', sans-serif;
-    transition: border-color 0.2s, transform 0.15s;
-  }
-
-  .btn-secondary:hover { border-color: var(--gold2); transform: translateY(-1px); }
-
-  /* INFO BANNER */
   .info-banner {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 2.5rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 2.25rem;
     margin-bottom: 3rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -285,114 +35,79 @@
     font-size: 0.72rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--gold);
-    font-family: 'Segoe UI', sans-serif;
+    color: var(--gold-deep);
+    font-weight: 600;
+    font-family: var(--sans);
     margin-bottom: 0.5rem;
   }
 
-  .info-item-text {
-    color: var(--muted);
-    font-size: 0.9rem;
-    line-height: 1.6;
-    font-family: 'Segoe UI', sans-serif;
+  .info-item-text { color: var(--muted); font-size: 0.9rem; line-height: 1.6; font-family: var(--sans); }
+
+  .product-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 900px; margin: 0 auto; }
+
+  .product-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
   }
 
-  /* ORDER FORMS */
-  .form-group {
+  .product-img { width: 100%; height: 260px; object-fit: cover; display: block; }
+  .product-body { padding: 1.75rem; }
+
+  .product-tag {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    background: rgba(200,150,42,0.12);
+    border: 1px solid rgba(138,100,18,0.35);
+    border-radius: 4px;
+    font-size: 0.7rem;
+    color: var(--gold-deep);
+    font-weight: 700;
+    font-family: var(--sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .product-title { font-size: 1.2rem; font-weight: 700; color: var(--ink); margin-bottom: 0.5rem; }
+  .product-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.75; font-family: var(--sans); margin-bottom: 1.25rem; }
+
+  .product-details { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem; }
+  .product-detail { font-size: 0.78rem; color: var(--muted); font-family: var(--sans); letter-spacing: 0.04em; }
+  .product-detail strong { color: var(--ink); display: block; font-size: 1rem; margin-bottom: 0.15rem; }
+
+  .notice-box {
+    background: rgba(200,150,42,0.08);
+    border: 1px solid rgba(138,100,18,0.35);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
     margin-bottom: 1.25rem;
   }
+  .notice-box p { font-size: 0.82rem; color: var(--muted); font-family: var(--sans); line-height: 1.6; margin: 0; }
+  .notice-box strong { color: var(--gold-deep); display: block; margin-bottom: 0.25rem; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
 
-  .form-group label {
-    display: block;
-    font-size: 0.78rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-family: 'Segoe UI', sans-serif;
-    margin-bottom: 0.4rem;
+  .pricing-box {
+    background: var(--cream-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
   }
+  .pricing-box .pricing-title { font-size: 0.72rem; color: var(--gold-deep); font-weight: 700; font-family: var(--sans); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem; }
+  .pricing-box .price-row { display: flex; justify-content: space-between; padding: 0.35rem 0; border-bottom: 1px solid var(--line); font-size: 0.85rem; color: var(--muted); font-family: var(--sans); }
+  .pricing-box .price-row:last-of-type { border-bottom: none; }
+  .pricing-box .price-row span:last-child { color: var(--ink); font-weight: 600; }
+  .pricing-box .price-note { font-size: 0.78rem; color: var(--muted); margin-top: 0.5rem; font-style: italic; font-family: var(--sans); }
 
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    background: var(--bg3);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 6px;
-    color: var(--text);
-    font-size: 0.9rem;
-    font-family: 'Segoe UI', sans-serif;
-    transition: border-color 0.2s;
-  }
+  .form-submit { text-align: center; }
 
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
-    outline: none;
-    border-color: var(--gold);
-  }
-
-  .form-group textarea {
-    resize: vertical;
-    min-height: 100px;
-  }
-
-  .form-group select option {
-    background: var(--bg2);
-    color: var(--text);
-  }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
-
-  .form-submit {
-    text-align: center;
-    margin-top: 1.5rem;
-  }
-
-  /* FOOTER */
-  footer {
-    text-align: center;
-    padding: 2rem 4rem;
-    border-top: 1px solid var(--border);
-    color: var(--muted);
-    font-size: 0.78rem;
-    letter-spacing: 0.06em;
-    font-family: 'Segoe UI', sans-serif;
-  }
-
-  footer a { color: var(--gold); text-decoration: none; }
-  footer a:hover { color: var(--gold2); }
-
-  /* RESPONSIVE */
   @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-toggle { display: block; }
-    nav ul {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      flex-direction: column;
-      background: rgba(15,12,7,0.97);
-      padding: 1.5rem;
-      gap: 0;
-      border-bottom: 1px solid var(--border);
-    }
-    nav ul.open { display: flex; }
-    nav ul li { padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
-    nav ul li:last-child { border-bottom: none; }
-    .page-header { padding: 8rem 1.5rem 3rem; }
-    section { padding: 3rem 1.5rem 4rem; }
-    .product-grid { grid-template-columns: 1fr !important; }
+    .page-header { padding: 7.5rem 1.25rem 2.5rem; }
     .info-banner { grid-template-columns: 1fr; gap: 1.5rem; }
-    .product-card .product-body { padding: 1.25rem; }
-    footer { padding: 1.5rem; }
+    .product-grid-2 { grid-template-columns: 1fr; }
+    .product-body { padding: 1.25rem; }
   }
 </style>
 </head>
@@ -401,17 +116,19 @@
 <!-- NAV -->
 <nav>
   <a href="index.html" class="logo">
-    <img src="Sunset_Basin_New_Logo.png" alt="Sunset Basin Farms" style="height:44px; width:44px; border-radius:50%; object-fit:cover; vertical-align:middle; margin-right:0.6rem;">
+    <img src="images/sunset-basin-logo.png" alt="Sunset Basin Farms logo">
     Sunset Basin Farms
   </a>
-  <button class="nav-toggle" aria-label="Toggle menu">
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav">
     <span></span><span></span><span></span>
   </button>
-  <ul>
-    <li><a href="index.html#story">Our Story</a></li>
-    <li><a href="index.html#operations">Operations</a></li>
-    <li><a href="index.html#iot">Technology</a></li>
-    <li><a href="preorder.html" style="color: var(--gold2);">Pre-Order</a></li>
+  <ul id="primary-nav">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="our-farm.html">Our Farm</a></li>
+    <li><a href="index.html#what-we-grow">What We Grow</a></li>
+    <li><a href="basin-roots/">Basin Roots Precision Ag</a></li>
+    <li><a href="our-farm.html#agrivoltaics">Agrivoltaics</a></li>
+    <li><a href="preorder.html" class="nav-cta" aria-current="page">Order Hay &amp; Eggs</a></li>
     <li><a href="index.html#contact">Contact</a></li>
   </ul>
 </nav>
@@ -446,24 +163,24 @@
     </div>
   </div>
 
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 900px; margin: 0 auto;">
+  <div class="product-grid-2">
 
-    <!-- HAY PRE-ORDER (Wheat & Rye Grass) -->
+    <!-- HAY ORDER -->
     <div class="product-card" id="hay-form">
-      <img class="product-img" src="TractorBaler575.jpg" alt="New Holland 575 baler making two-string small square bales at Sunset Basin Farms" style="height: 260px;" loading="lazy" />
+      <img class="product-img" src="images/TractorBaler575.jpg" alt="New Holland 575 baler making two-string small square bales at Sunset Basin Farms" loading="lazy">
       <div class="product-body">
         <span class="product-tag">NOW TAKING ORDERS</span>
         <h3 class="product-title">Utility Mixed Hay — Small Square Bales</h3>
         <p class="product-desc">
           Locally grown and baled at Sunset Basin Farms in Klamath Falls, Oregon. This is utility mixed hay/roughage from a drought-year field and may include wheat, cheatgrass, mustard, grasses, broadleaf weeds, mature seed heads, and other field vegetation. Best suited for cattle, goats, sheep, bedding, or general roughage. Buyer inspection is encouraged before purchase.
         </p>
-        <div style="background: rgba(200,150,42,0.07); border: 1px solid rgba(200,150,42,0.3); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.25rem;">
-          <p style="font-size: 0.82rem; color: var(--muted); font-family: 'Segoe UI', sans-serif; line-height: 1.6; margin: 0;">
-            <strong style="color: var(--gold); display: block; margin-bottom: 0.25rem; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;">Notice</strong>
+        <div class="notice-box">
+          <p>
+            <strong>Notice</strong>
             Not sold as premium horse hay, certified weed-free hay, tested hay, or guaranteed livestock feed. Hay is sold as-is as utility mixed hay/roughage.
           </p>
         </div>
-        <div class="product-details" style="margin-bottom: 1.25rem;">
+        <div class="product-details">
           <div class="product-detail">
             <strong>Small Square</strong>
             Two-string bales
@@ -477,23 +194,12 @@
             Approx. 50–65 lb
           </div>
         </div>
-        <div style="background: var(--bg3); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem;">
-          <p style="font-size: 0.72rem; color: var(--gold); font-family: 'Segoe UI', sans-serif; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem;">Pricing — Picked Up at Farm</p>
-          <div style="font-size: 0.85rem; color: var(--muted); font-family: 'Segoe UI', sans-serif; line-height: 1.75;">
-            <div style="display: flex; justify-content: space-between; padding: 0.35rem 0; border-bottom: 1px solid rgba(255,255,255,0.04);">
-              <span>Utility mixed hay</span>
-              <span style="color: var(--text);">$5/bale</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; padding: 0.35rem 0; border-bottom: 1px solid rgba(255,255,255,0.04);">
-              <span>Wheat/mustard mix</span>
-              <span style="color: var(--text);">$5–$6/bale</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; padding: 0.35rem 0;">
-              <span>Mustard-heavy roughage/bedding</span>
-              <span style="color: var(--text);">$3–$4/bale</span>
-            </div>
-            <p style="font-size: 0.78rem; color: var(--muted); margin-top: 0.5rem; font-style: italic;">Pricing varies by lot. Buyer may inspect before purchase.</p>
-          </div>
+        <div class="pricing-box">
+          <p class="pricing-title">Pricing — Picked Up at Farm</p>
+          <div class="price-row"><span>Utility mixed hay</span><span>$5/bale</span></div>
+          <div class="price-row"><span>Wheat/mustard mix</span><span>$5–$6/bale</span></div>
+          <div class="price-row"><span>Mustard-heavy roughage/bedding</span><span>$3–$4/bale</span></div>
+          <p class="price-note">Pricing varies by lot. Buyer may inspect before purchase.</p>
         </div>
         <form action="https://formspree.io/f/xjgpdwzp" method="POST">
           <input type="hidden" name="_subject" value="Order: Utility Mixed Hay">
@@ -517,13 +223,13 @@
             <input type="email" id="hay-email" name="email" required placeholder="you@example.com">
           </div>
           <div class="form-group">
-            <label for="hay-phone">Phone (optional)</label>
+            <label for="hay-phone">Phone <span class="optional">(optional)</span></label>
             <input type="tel" id="hay-phone" name="phone" placeholder="(541) 555-0000">
           </div>
           <div class="form-group">
             <label for="hay-quantity">Quantity (# of bales)</label>
             <input type="text" id="hay-quantity" name="quantity" placeholder="e.g. 50 bales">
-            <p style="font-size: 0.75rem; color: var(--muted); font-family: 'Segoe UI', sans-serif; margin-top: 0.35rem; line-height: 1.5;">Approx. 30–32 small square bales equals about one ton, depending on bale weight.</p>
+            <p style="font-size: 0.75rem; color: var(--muted); font-family: var(--sans); margin-top: 0.35rem; line-height: 1.5;">Approx. 30–32 small square bales equals about one ton, depending on bale weight.</p>
           </div>
           <div class="form-group">
             <label for="hay-message">Message</label>
@@ -538,7 +244,7 @@
 
     <!-- EGG ORDER -->
     <div class="product-card" id="egg-form">
-      <img class="product-img" src="Eggsforsaleone.jpg" alt="Fresh farm eggs from Sunset Basin Farms" style="height: 260px;" loading="lazy" />
+      <img class="product-img" src="images/Eggsforsaleone.jpg" alt="Fresh farm eggs from Sunset Basin Farms" loading="lazy">
       <div class="product-body">
         <span class="product-tag">Order Request</span>
         <h3 class="product-title">Farm Chicken Eggs — Ungraded</h3>
@@ -568,7 +274,7 @@
             <input type="email" id="egg-email" name="email" required placeholder="you@example.com">
           </div>
           <div class="form-group">
-            <label for="egg-phone">Phone (optional)</label>
+            <label for="egg-phone">Phone <span class="optional">(optional)</span></label>
             <input type="tel" id="egg-phone" name="phone" placeholder="(541) 555-0000">
           </div>
           <div class="form-group">
@@ -597,14 +303,20 @@
 </section>
 
 <footer>
-  <p>&copy; 2026 Sunset Basin Farms — Klamath Falls, Oregon &nbsp;&middot;&nbsp; Chris &amp; Sara Vancura &nbsp;&middot;&nbsp; <a href="tel:+15412247743">541-224-7743</a></p>
-  <p style="margin-top:0.5rem;">
-    <a href="https://www.facebook.com/SunsetBasinFarms" target="_blank">Facebook</a>
+  <p>&copy; 2026 Sunset Basin Farms LLC — Klamath Falls, Oregon &nbsp;&middot;&nbsp; Chris &amp; Sara Vancura &nbsp;&middot;&nbsp; <a href="tel:+15412247743">541-224-7743</a></p>
+  <p>Basin Roots Precision Ag is a division of Sunset Basin Farms LLC.</p>
+  <p>
+    Sunset Basin Farms:
+    <a href="https://www.facebook.com/SunsetBasinFarms" target="_blank" rel="noopener" aria-label="Sunset Basin Farms on Facebook">Facebook</a>
+    |
+    <a href="https://www.instagram.com/sunsetbasinfarmsllc/" target="_blank" rel="noopener" aria-label="Sunset Basin Farms on Instagram">Instagram</a>
     &nbsp;&middot;&nbsp;
-    <a href="https://www.instagram.com/sunsetbasinfarmsllc/" target="_blank">Instagram</a>
-    &nbsp;&middot;&nbsp;
-    Built by <a href="https://goldenvlabs.github.io">Golden V Labs</a>
+    Basin Roots Precision Ag:
+    <a href="https://www.facebook.com/BasinRootsPrecisionAg/" target="_blank" rel="noopener" aria-label="Basin Roots Precision Ag on Facebook">Facebook</a>
+    |
+    <a href="https://www.instagram.com/basinrootsprecisionag/" target="_blank" rel="noopener" aria-label="Basin Roots Precision Ag on Instagram">Instagram</a>
   </p>
+  <p>Built by <a href="https://goldenvlabs.github.io">Golden V Labs</a></p>
 </footer>
 
 <script>
@@ -612,13 +324,15 @@
   const toggle = document.querySelector('.nav-toggle');
   const menu = document.querySelector('nav ul');
   toggle.addEventListener('click', () => {
-    toggle.classList.toggle('open');
+    const open = toggle.classList.toggle('open');
     menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
   });
   menu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       toggle.classList.remove('open');
       menu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
     });
   });
 
@@ -630,7 +344,7 @@
       ? 'Your hay order inquiry has been submitted! We\'ll be in touch soon.'
       : 'Your egg order request has been submitted! We\'ll be in touch soon.';
     const banner = document.createElement('div');
-    banner.style.cssText = 'position:fixed;top:70px;left:50%;transform:translateX(-50%);background:#4A6741;color:#EDE8DC;padding:1rem 2rem;border-radius:8px;font-family:Segoe UI,sans-serif;font-size:0.9rem;z-index:200;text-align:center;max-width:90%;box-shadow:0 4px 20px rgba(0,0,0,0.4);';
+    banner.style.cssText = 'position:fixed;top:70px;left:50%;transform:translateX(-50%);background:#35502D;color:#FAF7EF;padding:1rem 2rem;border-radius:8px;font-family:Segoe UI,sans-serif;font-size:0.9rem;z-index:200;text-align:center;max-width:90%;box-shadow:0 4px 20px rgba(0,0,0,0.25);';
     banner.textContent = msg;
     document.body.appendChild(banner);
     setTimeout(() => { banner.style.transition = 'opacity 0.5s'; banner.style.opacity = '0'; }, 5000);
