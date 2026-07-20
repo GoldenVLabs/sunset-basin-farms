@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>High Lakes Ranch — Garden Demonstration Site | Basin Roots Precision Ag Client Portal</title>
+<meta name="description" content="Demonstration client portal for Basin Roots Precision Ag — soil moisture, temperature and electrical conductivity monitoring for the High Lakes Ranch garden demonstration site.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="css/portal.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+</head>
+<body>
+
+<div class="portal-shell">
+
+  <header class="portal-header" id="portal-header"></header>
+
+  <div class="portal-disclosure" id="portal-disclosure"></div>
+
+  <!-- CURRENT CONDITIONS -->
+  <section class="portal-section" aria-label="Current conditions">
+    <div class="portal-location" id="portal-location"></div>
+    <div class="portal-cards" id="portal-cards"></div>
+  </section>
+
+  <!-- CHARTS -->
+  <section class="portal-section" aria-label="Trends">
+    <div class="portal-charts-row">
+
+      <div class="portal-chart-panel">
+        <div class="portal-chart-head">
+          <div class="portal-chart-title">Soil Moisture Trend</div>
+          <div class="portal-toggle-group">
+            <button type="button" class="portal-toggle-btn" data-moisture-range="24H">24 Hours</button>
+            <button type="button" class="portal-toggle-btn" data-moisture-range="7D">7 Days</button>
+          </div>
+        </div>
+        <div class="portal-chart-canvas-wrap">
+          <canvas id="portal-moisture-chart"></canvas>
+        </div>
+      </div>
+
+      <div class="portal-chart-panel">
+        <div class="portal-chart-head">
+          <div class="portal-chart-title">Temperature &amp; Conductivity</div>
+          <div class="portal-toggle-group">
+            <button type="button" class="portal-toggle-btn" data-secondary-metric="soilTemperatureF">Temperature</button>
+            <button type="button" class="portal-toggle-btn" data-secondary-metric="ecDsPerM">EC</button>
+          </div>
+        </div>
+        <div class="portal-chart-canvas-wrap">
+          <canvas id="portal-secondary-chart"></canvas>
+        </div>
+        <p class="portal-chart-explainer" id="portal-ec-explainer"></p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FIELD INSIGHTS -->
+  <section class="portal-section" aria-label="Field insights">
+    <div class="portal-section-head">
+      <div class="portal-section-label">Field Insights</div>
+      <div class="portal-section-title">What the sensor observed</div>
+    </div>
+    <div class="portal-insights-list" id="portal-insights-list"></div>
+  </section>
+
+  <!-- EVENT TIMELINE -->
+  <section class="portal-section" aria-label="Recent activity">
+    <div class="portal-section-head">
+      <div class="portal-section-label">Recent Activity</div>
+      <div class="portal-section-title">Event timeline</div>
+    </div>
+    <div class="portal-timeline" id="portal-timeline"></div>
+  </section>
+
+  <!-- WHAT THIS SHOWS -->
+  <section class="portal-section portal-decision-support" aria-label="What this shows">
+    <div class="portal-section-head">
+      <div class="portal-section-label">Decision Support</div>
+      <div class="portal-section-title">What This Shows</div>
+      <p class="portal-section-intro" id="portal-decision-intro"></p>
+    </div>
+    <ul class="portal-decision-list" id="portal-decision-list"></ul>
+    <p class="portal-decision-footnote" id="portal-decision-footnote"></p>
+  </section>
+
+  <footer class="portal-footer" id="portal-footer"></footer>
+
+</div>
+
+<button type="button" class="portal-screenshot-toggle" id="portal-screenshot-toggle">Screenshot Mode</button>
+
+<script src="js/config.js"></script>
+<script src="js/data/sensor-data.js"></script>
+<script src="js/services/api.js"></script>
+<script src="js/components/utils.js"></script>
+<script src="js/components/header.js"></script>
+<script src="js/components/cards.js"></script>
+<script src="js/components/charts.js"></script>
+<script src="js/components/insights.js"></script>
+<script src="js/components/timeline.js"></script>
+<script src="js/components/decisionSupport.js"></script>
+<script src="js/components/screenshotMode.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
