@@ -194,31 +194,32 @@
     drought, irrigation timing and the need for practical—not complicated—data.
   </p>
 
-  <div class="photo-grid" style="margin-bottom:2rem;">
-    <img src="images/basin-roots-gateway-installation.jpg" alt="Installing the LoRaWAN gateway antenna on the barn roof at Sunset Basin Farms" loading="lazy">
-    <img src="images/basin-roots-soil-gauges.png" alt="Soil sensor readout gauges showing live moisture, conductivity and temperature from two field sensors" style="object-fit:contain; background:#14181D;" loading="lazy">
-    <img src="images/basin-roots-dashboard.png" alt="Basin Roots dashboard charting a month of soil moisture, temperature, conductivity and battery voltage" style="object-fit:contain; background:#14181D;" loading="lazy">
-    <div class="field-sensor-visual">
-      <p class="panel-heading" data-field="panelStatus">Last known reading — live feed temporarily unavailable</p>
-      <div class="field-sensor-metric">
-        <span class="field-sensor-metric-label">Soil Moisture</span>
-        <span class="field-sensor-metric-value" data-field="soilMoisture">20.9%</span>
+  <h3 style="font-size:1.3rem; font-weight:700; color:var(--ink); margin-bottom:0.75rem;">From the Field to the Screen</h3>
+  <p class="section-intro" style="margin-top:0;">
+    Basin Roots combines field hardware, remote connectivity, and a clear client portal to turn
+    sensor readings into practical monitoring information.
+  </p>
+
+  <div class="feature-grid" style="margin-bottom:2rem;">
+    <div class="feature-card">
+      <img src="images/basin-roots-gateway-installation.jpg" alt="Installing a Basin Roots LoRaWAN gateway at Sunset Basin Farms." loading="lazy">
+      <div class="feature-body">
+        <h4 class="feature-title">Gateway Installation</h4>
+        <p class="feature-desc">Remote LoRaWAN gateway installation for field connectivity.</p>
       </div>
-      <div class="field-sensor-metric">
-        <span class="field-sensor-metric-label">Soil Temperature</span>
-        <span class="field-sensor-metric-value" data-field="soilTemperatureF">60.6&deg;F</span>
+    </div>
+    <div class="feature-card">
+      <img src="images/soilsensoringarden.jpg" alt="Basin Roots soil sensor installed in a tomato garden root zone." loading="lazy">
+      <div class="feature-body">
+        <h4 class="feature-title">Field Monitoring in Action</h4>
+        <p class="feature-desc">Real garden deployment used to observe watering response, dry-down, soil temperature, and electrical conductivity.</p>
       </div>
-      <div class="field-sensor-metric">
-        <span class="field-sensor-metric-label">Soil Condition</span>
-        <span class="field-sensor-metric-value" data-field="soilCondition">Drying</span>
-      </div>
-      <div class="field-sensor-metric">
-        <span class="field-sensor-metric-label">Sensor Status</span>
-        <span class="field-sensor-metric-value" data-field="sensorStatus" style="color:#2E7D32;">Online</span>
-      </div>
-      <div class="field-sensor-metric">
-        <span class="field-sensor-metric-label">Last Updated</span>
-        <span class="field-sensor-metric-value" data-field="lastUpdated">Today</span>
+    </div>
+    <div class="feature-card">
+      <img src="images/ScreenshotPortalDemo.png" alt="Basin Roots Precision Ag demonstration client portal showing soil moisture, temperature, conductivity, and irrigation trends." style="object-fit:contain; background:#F6F7F4;" loading="lazy">
+      <div class="feature-body">
+        <h4 class="feature-title">Client Portal</h4>
+        <p class="feature-desc">Demonstration client portal using representative data based on real field sensor observations.</p>
       </div>
     </div>
   </div>
@@ -305,51 +306,6 @@
     });
   });
 
-  const fallbackFieldSensorData = {
-    soilMoisture: 20.9,
-    soilTemperatureF: 60.6,
-    soilCondition: 'Drying',
-    sensorStatus: 'Online',
-    lastUpdated: 'Today'
-  };
-
-  const updateFieldSensorPanel = (data) => {
-    const fields = {
-      soilMoisture: `${data.soilMoisture}%`,
-      soilTemperatureF: `${data.soilTemperatureF}°F`,
-      soilCondition: data.soilCondition,
-      sensorStatus: data.sensorStatus,
-      lastUpdated: data.lastUpdated
-    };
-
-    Object.entries(fields).forEach(([field, value]) => {
-      const element = document.querySelector(`[data-field="${field}"]`);
-      if (element) element.textContent = value;
-    });
-  };
-
-  const setPanelStatus = (live) => {
-    const heading = document.querySelector('[data-field="panelStatus"]');
-    if (heading) heading.textContent = live
-      ? 'Live field data'
-      : 'Last known reading — live feed temporarily unavailable';
-  };
-
-  updateFieldSensorPanel(fallbackFieldSensorData);
-
-  fetch('/data/latest-field-sensor.json')
-    .then(response => {
-      if (!response.ok) throw new Error('feed unavailable');
-      return response.json();
-    })
-    .then(data => {
-      updateFieldSensorPanel({ ...fallbackFieldSensorData, ...data });
-      setPanelStatus(true);
-    })
-    .catch(() => {
-      updateFieldSensorPanel(fallbackFieldSensorData);
-      setPanelStatus(false);
-    });
 </script>
 
 </body>
