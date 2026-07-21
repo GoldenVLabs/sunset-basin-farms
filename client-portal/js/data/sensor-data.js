@@ -87,12 +87,25 @@ const SENSOR_DATA = (function buildSensorData() {
       timestamp: isoTimestamp(event.day, Math.floor(event.hour), Math.round((event.hour % 1) * 60)),
       label: event.label
     })),
-    insights: [
-      'Watering was detected at approximately 6:15 PM.',
-      'Soil moisture increased rapidly following irrigation, reaching about 34% within 30 minutes.',
-      'The garden root zone began drying gradually through the evening.',
-      'Soil moisture has remained within the demonstration target range of 24–34%.',
-      'Electrical conductivity remained relatively stable during the monitoring period.'
+    fieldSummary: [
+      {
+        label: 'Watering Response',
+        headline: 'Irrigation reached the monitored root zone.',
+        detail: 'Soil moisture increased from approximately 23% to 34% after watering.',
+        status: 'informational'
+      },
+      {
+        label: 'Current Trend',
+        headline: 'Moisture is drying down normally.',
+        detail: 'The current reading is 28%, within the demonstration target range of 24–34%.',
+        status: 'positive'
+      },
+      {
+        label: 'Soil Condition',
+        headline: 'No unusual change detected.',
+        detail: 'Electrical conductivity remained stable near 0.42 dS/m during the monitoring period.',
+        status: 'neutral'
+      }
     ],
     events: [
       {
@@ -196,12 +209,26 @@ const SENSOR_DATA = (function buildSensorData() {
     return round1(base + (event.peakMoisture - base) * Math.exp(-hoursAfterPeak / event.tau));
   }
 
-  // Daily cycle: ~58°F pre-dawn low to ~72°F late-afternoon high.
+  // Daily cycle: ~58°F pre-dawn low to ~72°F late-afternoon high, plus slow,
+  // deterministic day-to-day wobble (no Math.random) so the seven daily
+  // cycles aren't perfectly identical — the high and low drift slightly and
+  // independently from day to day, and the afternoon peak shifts in time by
+  // a small amount. Everything here is a continuous function of
+  // hoursSinceStart, so the curve stays smooth across day boundaries instead
+  // of jumping. The pinned 68°F "current" reading is spliced in separately
+  // in generateReadings() and is unaffected by this formula.
   function temperatureAt(hoursSinceStart) {
     const hourOfDay = hoursSinceStart % 24;
-    const mean = 65;
-    const amplitude = 7;
-    const peakHour = 16.3; // ~4:18 PM
+    const dayPhase = hoursSinceStart / 24;
+
+    const highShift = 2.0 * Math.sin((2 * Math.PI * dayPhase) / 5 + 0.5);   // daily-high wobble
+    const lowShift = 1.3 * Math.sin((2 * Math.PI * dayPhase) / 3.3 + 2.0);  // overnight-low wobble
+    const peakShift = 0.9 * Math.sin((2 * Math.PI * dayPhase) / 4.2 + 1.0); // hours of peak-timing drift
+
+    const mean = 65 + (highShift + lowShift) / 2;
+    const amplitude = 7 + (highShift - lowShift) / 2;
+    const peakHour = 16.3 + peakShift; // ~4:18 PM, drifting slightly day to day
+
     return round1(mean + amplitude * Math.cos((2 * Math.PI * (hourOfDay - peakHour)) / 24));
   }
 

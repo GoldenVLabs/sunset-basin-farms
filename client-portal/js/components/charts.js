@@ -207,18 +207,23 @@ Portal.charts = (function () {
           },
           y: {
             grid: { color: colors.gridLine },
-            ticks: {
-              callback: v => isTemp ? v + '°F' : v + ' dS/m',
-              color: '#5B6670',
-              font: { size: 11 }
-            }
+            ticks: Object.assign(
+              {
+                callback: v => isTemp ? v + '°F' : Number(v).toFixed(2) + ' dS/m',
+                color: '#5B6670',
+                font: { size: 11 }
+              },
+              isTemp ? {} : { stepSize: 0.01 }
+            )
           }
         },
         plugins: {
           legend: { display: false },
           tooltip: {
             callbacks: {
-              label: item => `${item.dataset.label}: ${item.formattedValue}`
+              label: item => isTemp
+                ? `${item.dataset.label}: ${item.formattedValue}`
+                : `${item.dataset.label}: ${Number(item.raw).toFixed(2)}`
             }
           }
         }
@@ -258,6 +263,7 @@ Portal.charts = (function () {
       btn.addEventListener('click', () => setSecondaryMetric(btn.dataset.secondaryMetric));
     });
     document.getElementById('portal-ec-explainer').textContent = CONFIG.ecExplainer;
+    document.getElementById('portal-moisture-explainer').textContent = CONFIG.moistureChartSummary;
 
     setMoistureRange(moistureRange);
     setSecondaryMetric(secondaryMetric);

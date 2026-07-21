@@ -12,7 +12,10 @@ Portal.renderHeader = function renderHeader() {
   const titleBlock = el('div');
 
   const brandRow = el('div', 'portal-brand-row');
-  const mark = el('div', 'portal-brand-mark', 'BR');
+  const mark = document.createElement('img');
+  mark.className = 'portal-brand-mark';
+  mark.src = 'images/LogoSqOnly.png';
+  mark.alt = 'Basin Roots Precision Ag';
   const brandName = el('div', 'portal-brand-name', CONFIG.brand.name);
   brandRow.append(mark, brandName);
 
@@ -52,5 +55,25 @@ Portal.renderHeader = function renderHeader() {
 
 Portal.renderFooter = function renderFooter() {
   const root = document.getElementById('portal-footer');
-  root.textContent = CONFIG.demo.disclosureLong;
+  const { el } = Portal.utils;
+  const copy = CONFIG.copy;
+
+  const disclosure = el('p', 'portal-footer-disclosure', CONFIG.demo.disclosureLong);
+  const decisionDisclaimer = el('p', 'portal-footer-disclaimer', copy.decisionSupportDisclaimer);
+
+  const cta = el('div', 'portal-footer-cta');
+  const ctaText = el('p', 'portal-footer-cta-text');
+  ctaText.append(
+    el('strong', null, copy.footerCtaHeadline),
+    document.createTextNode(' ' + copy.footerCtaBody)
+  );
+  cta.appendChild(ctaText);
+
+  if (copy.footerCtaHref) {
+    const link = el('a', 'portal-footer-cta-btn', copy.footerCtaButtonText);
+    link.href = copy.footerCtaHref;
+    cta.appendChild(link);
+  }
+
+  root.append(disclosure, decisionDisclaimer, cta);
 };

@@ -10,7 +10,7 @@ const CONFIG = {
 
   brand: {
     name: 'Basin Roots Precision Ag',
-    tagline: 'Powered by Basin Roots Precision Ag'
+    tagline: 'Remote soil and irrigation monitoring demonstration'
   },
 
   property: {
@@ -65,8 +65,9 @@ const CONFIG = {
     soilMoisture: 'Soil Moisture',
     soilTemperature: 'Soil Temperature',
     ec: 'Electrical Conductivity',
-    condition: 'Current Condition',
-    lastUpdated: 'Last Updated'
+    moistureRange: 'Moisture Range',
+    lastUpdated: 'Last Updated',
+    dataStatus: 'Data Status'
   },
 
   chart: {
@@ -88,9 +89,15 @@ const CONFIG = {
 
   ecExplainer: 'Electrical conductivity (EC) reflects the level of dissolved salts and nutrients present in the soil water.',
 
+  moistureChartSummary: 'Moisture increased from approximately 23% to 34% following irrigation, then began a gradual dry-down.',
+
   copy: {
-    fieldInsightsTitle: 'Field Insights',
-    fieldInsightsIntro: 'Plain-language notes based on recent sensor readings.',
+    fieldSummaryStatusLine: 'Current status: No immediate follow-up indicated. Continue normal monitoring.',
+
+    ecStatusCaption: 'Stable',
+    moistureRangeValue: 'Within Target',
+    dataStatusValue: 'Current',
+    dataStatusCaption: 'Last report received successfully',
 
     eventTimelineTitle: 'Recent Activity',
 
@@ -103,6 +110,14 @@ const CONFIG = {
       'Review field information remotely',
       'Identify unusual changes that may require inspection'
     ],
-    whatThisShowsFootnote: 'This portal provides monitoring and decision-support information. It does not control irrigation automatically.'
+    whatThisShowsFootnote: 'This portal provides monitoring and decision-support information. It does not control irrigation automatically.',
+
+    decisionSupportDisclaimer: 'Basin Roots Precision Ag provides monitoring and decision-support information. ' +
+      'Irrigation and land-management decisions remain the responsibility of the property owner or manager.',
+
+    footerCtaHeadline: 'Interested in monitoring your property?',
+    footerCtaBody: 'Request a site assessment from Basin Roots Precision Ag.',
+    footerCtaButtonText: 'Request a Site Assessment',
+    footerCtaHref: 'mailto:basinroots@gmail.com'
   }
 };

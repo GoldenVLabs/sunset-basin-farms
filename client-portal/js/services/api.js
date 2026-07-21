@@ -64,10 +64,10 @@ const PortalAPI = (function () {
     return resolveAfter(SENSOR_DATA.events);
   }
 
-  /* GET /api/client/insights
-     Plain-language field insights. */
-  function getInsights() {
-    return resolveAfter(SENSOR_DATA.insights);
+  /* GET /api/client/field-summary
+     Client-friendly field summary cards. */
+  function getFieldSummary() {
+    return resolveAfter(SENSOR_DATA.fieldSummary);
   }
 
   return {
@@ -75,6 +75,6 @@ const PortalAPI = (function () {
     getCurrentReadings,
     getTrends,
     getEvents,
-    getInsights
+    getFieldSummary
   };
 })();

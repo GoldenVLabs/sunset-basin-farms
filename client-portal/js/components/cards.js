@@ -3,6 +3,8 @@
    Renders the monitoring-location strip and the current-conditions cards.
    Battery/sensor-health data exists in SENSOR_DATA.sensorHealth but is only
    surfaced here if a warning flag is active.
+   CONFIG.location.internalId is deliberately not rendered here — it's kept
+   in config for future support use, not shown on the client-facing strip.
    Relies on the shared Portal namespace declared in utils.js, which must
    load first. */
 
@@ -13,8 +15,7 @@ Portal.renderLocation = function renderLocation() {
   const info = el('div');
   const name = el('div', 'portal-location-name', CONFIG.location.displayName);
   const sub = el('div', 'portal-location-sub', CONFIG.location.description);
-  const id = el('div', 'portal-location-id', CONFIG.location.internalId);
-  info.append(name, sub, id);
+  info.append(name, sub);
 
   const status = el('span', 'portal-status-pill', SENSOR_DATA.currentSnapshot.condition);
 
@@ -28,12 +29,19 @@ Portal.renderCards = function renderCards() {
   const units = CONFIG.units;
   const labels = CONFIG.metricLabels;
 
+  const moistureRange = CONFIG.targetRanges.moisture;
+
   const cards = [
     { label: labels.soilMoisture, value: `${snapshot.soilMoisturePct}${units.moisture}` },
     { label: labels.soilTemperature, value: `${snapshot.soilTemperatureF}${units.temperature}` },
-    { label: labels.ec, value: `${snapshot.ecDsPerM} ${units.ec}`, small: true },
-    { label: labels.condition, value: snapshot.condition, small: true },
-    { label: labels.lastUpdated, value: Portal.utils.formatTime(snapshot.lastUpdated) }
+    { label: labels.ec, value: `${snapshot.ecDsPerM} ${units.ec}`, small: true, caption: CONFIG.copy.ecStatusCaption },
+    {
+      label: labels.moistureRange,
+      value: CONFIG.copy.moistureRangeValue,
+      small: true,
+      caption: `${moistureRange.min}–${moistureRange.max}${units.moisture}`
+    },
+    { label: labels.dataStatus, value: CONFIG.copy.dataStatusValue, caption: CONFIG.copy.dataStatusCaption }
   ];
 
   cards.forEach(card => {
@@ -42,6 +50,7 @@ Portal.renderCards = function renderCards() {
       el('div', 'portal-card-label', card.label),
       el('div', `portal-card-value${card.small ? ' small' : ''}`, card.value)
     );
+    if (card.caption) cardEl.appendChild(el('div', 'portal-card-caption', card.caption));
     root.appendChild(cardEl);
   });
 

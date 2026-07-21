@@ -12,7 +12,7 @@
   Portal.renderLocation();
   Portal.renderCards();
   Portal.charts.init();
-  Portal.renderInsights();
+  Portal.renderFieldSummary();
   Portal.renderTimeline();
   Portal.renderDecisionSupport();
 })();

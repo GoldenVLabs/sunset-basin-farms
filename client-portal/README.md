@@ -15,6 +15,14 @@ live feed. The portal displays a persistent disclosure to that effect, and the p
 marked `noindex` so it isn't picked up by search engines while unlinked from the main
 site's navigation.
 
+## Current Status
+
+- Polished public-facing demonstration
+- Uses representative data based on real field observations
+- Not connected to live sensors
+- No client login or account system yet
+- Intended for website previews, screenshots, sales demonstrations, and future development
+
 ## Quick Start
 
 No build step — open it directly:
@@ -67,7 +75,7 @@ client-portal/
 │       ├── header.js             Brand header, disclosure banner, footer
 │       ├── cards.js               Monitoring-location strip + current-conditions cards
 │       ├── charts.js             Moisture chart (24H/7D) + Temperature/EC toggle chart
-│       ├── insights.js           Field Insights panel
+│       ├── insights.js           Field Summary panel
 │       ├── timeline.js           Recent-activity event timeline
 │       ├── decisionSupport.js    "What This Shows" section
 │       └── screenshotMode.js     ?screenshot=1 / toggle-button behavior
@@ -89,7 +97,7 @@ exists and does not redeclare it), then the rest of the components, then `main.j
   deterministically *generates* a 7-day series of 15-minute readings (no `Math.random`,
   so the demo looks identical on every load) modeling a real observed irrigation event,
   plus the current snapshot, sensor health flags, irrigation event markers, field
-  insights, and the event timeline.
+  field summary, and the event timeline.
 
 Everything the interface renders is read from these two files (plus `SENSOR_DATA`
 computed values). To change the story the demo tells — different property name,
@@ -106,7 +114,7 @@ endpoints:
 | `PortalAPI.getPropertySummary()` | `GET /api/client/property-summary` |
 | `PortalAPI.getCurrentReadings()` | `GET /api/client/current-readings` |
 | `PortalAPI.getTrends(range)` | `GET /api/client/trends?range=24H\|7D` |
-| `PortalAPI.getInsights()` | `GET /api/client/insights` |
+| `PortalAPI.getFieldSummary()` | `GET /api/client/field-summary` |
 | `PortalAPI.getEvents()` | `GET /api/client/events` |
 
 Right now each function just resolves a `Promise` with the same local demo data the

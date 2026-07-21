@@ -65,9 +65,9 @@ button { font-family: inherit; }
   justify-content: space-between;
   align-items: flex-start;
   gap: 2rem;
-  padding-bottom: 1.75rem;
+  padding-bottom: 1.5rem;
   border-bottom: 1px solid var(--bp-line);
-  margin-bottom: 2rem;
+  margin-bottom: 1.75rem;
 }
 
 .portal-brand-row {
@@ -78,15 +78,9 @@ button { font-family: inherit; }
 }
 
 .portal-brand-mark {
-  width: 34px; height: 34px;
-  border-radius: 9px;
-  background: var(--bp-teal-deep);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 1rem;
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
   flex: none;
 }
 
@@ -165,7 +159,7 @@ button { font-family: inherit; }
   border-left: 4px solid var(--bp-gold);
   border-radius: 10px;
   padding: 0.9rem 1.2rem;
-  margin-bottom: 2.25rem;
+  margin-bottom: 1.95rem;
   font-size: 0.85rem;
   color: var(--bp-muted);
 }
@@ -229,7 +223,6 @@ button { font-family: inherit; }
 
 .portal-location-name { font-size: 1.15rem; font-weight: 700; color: var(--bp-navy); }
 .portal-location-sub { font-size: 0.82rem; color: var(--bp-muted); margin-top: 0.15rem; }
-.portal-location-id { font-size: 0.74rem; color: var(--bp-muted); }
 
 .portal-status-pill {
   font-size: 0.76rem;
@@ -274,6 +267,13 @@ button { font-family: inherit; }
 }
 
 .portal-card-value.small { font-size: 1.15rem; }
+
+.portal-card-caption {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--bp-ok-text);
+  margin-top: 0.45rem;
+}
 
 .portal-card.warning { border-color: rgba(169,118,45,0.4); background: var(--bp-warn-bg); }
 .portal-card.warning .portal-card-value { color: var(--bp-warn-text); }
@@ -343,32 +343,59 @@ button { font-family: inherit; }
   align-items: start;
 }
 
-/* ---------- INSIGHTS ---------- */
-.portal-insights-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
+/* ---------- FIELD SUMMARY ---------- */
+.portal-field-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
 }
 
-.portal-insight-item {
-  display: flex;
-  gap: 0.75rem;
-  align-items: flex-start;
+.portal-summary-card {
   background: var(--bp-card);
   border: 1px solid var(--bp-line);
+  border-left: 4px solid var(--bp-line);
   border-radius: 10px;
-  padding: 1rem 1.25rem;
+  padding: 1.1rem 1.3rem;
   box-shadow: var(--bp-shadow);
-  font-size: 0.92rem;
-  color: var(--bp-ink);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
-.portal-insight-item .marker {
-  flex: none;
-  width: 8px; height: 8px;
-  margin-top: 0.5rem;
-  border-radius: 50%;
-  background: var(--bp-green);
+.portal-summary-card-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--bp-muted);
+}
+
+.portal-summary-card-headline {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--bp-navy);
+  line-height: 1.35;
+}
+
+.portal-summary-card-detail {
+  font-size: 0.88rem;
+  color: var(--bp-muted);
+}
+
+.portal-summary-card.status-positive { border-left-color: var(--bp-ok-text); }
+.portal-summary-card.status-positive .portal-summary-card-label { color: var(--bp-ok-text); }
+
+.portal-summary-card.status-informational { border-left-color: var(--bp-teal-deep); }
+.portal-summary-card.status-informational .portal-summary-card-label { color: var(--bp-teal-deep); }
+
+.portal-summary-card.status-neutral { border-left-color: var(--bp-muted); }
+
+.portal-field-summary-status {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--bp-line);
+  font-size: 0.88rem;
+  color: var(--bp-muted);
 }
 
 /* ---------- EVENT TIMELINE ---------- */
@@ -462,6 +489,38 @@ button { font-family: inherit; }
   text-align: center;
 }
 
+.portal-footer-disclosure,
+.portal-footer-disclaimer {
+  max-width: 720px;
+  margin: 0 auto 0.75rem;
+}
+
+.portal-footer-cta {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--bp-line);
+}
+
+.portal-footer-cta-text {
+  font-size: 0.88rem;
+  color: var(--bp-ink);
+  margin-bottom: 1rem;
+}
+
+.portal-footer-cta-btn {
+  display: inline-block;
+  background: var(--bp-teal-deep);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  padding: 0.65rem 1.4rem;
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+.portal-footer-cta-btn:hover { background: var(--bp-navy); }
+
 /* ---------- SCREENSHOT MODE ---------- */
 /* Hides interactive chrome that isn't needed in a static marketing
    screenshot. The demonstration disclosure (.portal-disclosure) is
@@ -506,6 +565,7 @@ body.screenshot-mode .portal-toggle-group { display: none; }
 
   .portal-header-meta { align-items: flex-start; text-align: left; width: 100%; }
   .portal-property-title { font-size: 1.5rem; }
+  .portal-brand-mark { width: 39px; height: 39px; }
 
   .portal-disclosure { padding: 0.85rem 1rem; }
 
