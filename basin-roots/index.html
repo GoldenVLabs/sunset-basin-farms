@@ -35,12 +35,6 @@
     max-width: 320px;
   }
 
-  .field-photo-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
   .field-photo-frame img {
     display: block;
     width: 100%;
@@ -118,7 +112,7 @@
 
 <!-- HERO -->
 <header class="hero" style="min-height:80vh;">
-  <div class="hero-img" style="background-image:url('../images/GatewayNight.jpg'); background-position:75% 15%;" role="img" aria-label="Basin Roots LoRaWAN gateway antenna glowing at dusk on its mounting pole, overlooking the farm fields with the Klamath Basin mountains silhouetted at sunset"></div>
+  <div class="hero-img" style="background-image:url('../images/GatewayNight.jpg'); background-size:contain; background-position:right center; background-repeat:no-repeat; background-color:#182032;" role="img" aria-label="Basin Roots LoRaWAN gateway antenna glowing at dusk on its mounting pole, overlooking the farm fields with the Klamath Basin mountains silhouetted at sunset"></div>
   <div class="hero-overlay" style="background:linear-gradient(to bottom, rgba(24,32,50,0.55) 0%, rgba(24,32,50,0.65) 45%, rgba(20,26,40,0.92) 100%);"></div>
   <div class="hero-content">
     <img src="../images/basin-roots-logo-dark.png" alt="Basin Roots Precision Ag logo" style="height:110px; width:auto; border-radius:10px; margin-bottom:1.5rem;">
@@ -239,17 +233,12 @@
   <div class="section-label teal">Real-World Testing</div>
   <h2 class="section-title">Field Monitoring in Action</h2>
   <div class="field-photo-grid">
-    <div class="field-photo-stack">
-      <div class="field-photo-frame">
-        <img src="../images/SensorInDirt.jpg" alt="Basin Roots soil sensor buried in an open field trench, wired and ready for backfill" loading="lazy">
-      </div>
-      <div class="field-photo-frame">
-        <img src="../images/DirtsSensorTwo.jpg" alt="Second angle of the buried field sensor in its trench before backfilling" loading="lazy">
-      </div>
+    <div class="field-photo-frame">
+      <img src="../images/SensorStandingField.jpg" alt="Basin Roots sensor and transmitter pole standing in an open field, with sky and the Klamath Basin mountains visible in the background" loading="lazy">
     </div>
     <div class="field-photo-text">
-      <p>Basin Roots sensors collect measurements directly from the monitored root zone. This field installation was used to observe irrigation response, soil dry-down, temperature, and electrical conductivity over time.</p>
-      <p class="field-photo-note">This sensor is buried in one of our open fields as part of our own ongoing field testing — a real installation, not a commercial client site.</p>
+      <p>Basin Roots sensors and their field transmitters are deployed together as a complete system — not just a buried probe, but the hardware that gets readings off the farm and into the dashboard.</p>
+      <p class="field-photo-note">Sensor and transmitter deployed in one of our open fields as part of our own ongoing field testing — a real installation, not a commercial client site.</p>
     </div>
   </div>
 </section>
@@ -284,14 +273,14 @@
     </p>
     <div class="case-grid">
       <div class="case-item">
-        <img src="../images/SensorStandingField.jpg" alt="A Basin Roots sensor pole standing in a dry, drought-stressed field near Klamath Falls, mountains on the horizon" loading="lazy">
+        <img src="../images/SensorInDirt.jpg" alt="Basin Roots soil sensor buried in an open field trench, wired and ready for backfill" loading="lazy">
         <div class="case-body">
           <h3>The Field Challenge</h3>
           <p>Flood-irrigated ground in a drought-prone basin, with limited water allotments and no way to see how deep each irrigation set actually soaked. We needed root-zone data to time sets with confidence.</p>
         </div>
       </div>
       <div class="case-item">
-        <img src="../images/SensorDeployment.jpg" alt="Hand brushing back soil beside a Basin Roots sensor wired to a stake during installation in a garden bed" loading="lazy">
+        <img src="../images/SensorDeployment.jpg" class="contain" alt="Hand brushing back soil beside a Basin Roots sensor wired to a stake during installation in a garden bed" loading="lazy">
         <div class="case-body">
           <h3>Sensor Deployment</h3>
           <p>Multiple soil probes placed across the property — garden ground and open field — each reporting moisture, temperature and conductivity on a fixed interval.</p>
